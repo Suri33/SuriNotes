@@ -1,0 +1,67 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "Creating Vpc & Subnets",
+    "Parameters": {
+        "vpcCIDR": {
+            "Description": "Enter Your CIDR Range",
+            "Type": "string",
+            "Defalut": "192.168.0.0/16"
+        },
+        "WebSubNet": {
+            "Description": "enter Youy WenSubnet CIDR Range",
+            "Type": "string",
+            "Defalut": "192.168.0.0/24"
+        },
+        "DataSubNet": {
+            "Description": "Enter Youy DataSubnet CIDR Range",
+            "Type": "string",
+            "Defalut": "192.168.1.0/24"
+        }
+    },
+    "Resources": {
+        "myvpc": {
+            "Type": "AWS::EC2::VPC",
+            "Properties": {
+                "CidrBlock": "192.168.0.0/16",
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": "ntier"
+                    }
+                ]
+            }
+        },
+        "WebSubNet": {
+            "Type": "AWS::EC2::Subnet",
+            "Properties": {
+                "AvailabilityZone": "ap-south-1a",
+                "VpcId": {
+                    "Ref": "myvpc"
+                },
+                "CidrBlock": "192.168.0.0/24",
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": "Web"
+                    }
+                ]
+            }
+        },
+        "DataSubNet": {
+            "Type": "AWS::EC2::Subnet",
+            "Properties": {
+                "AvailabilityZone": "ap-south-1b",
+                "VpcId": {
+                    "Ref": "myvpc"
+                },
+                "CidrBlock": "192.168.1.0/24",
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": "Data"
+                    }
+                ]
+            }
+        }
+    }
+}

@@ -1,0 +1,40 @@
+{
+
+    
+    "mySubnet": {
+        "Type": "-",
+                "Properties": "-"
+    },
+    
+
+"samplePlaying": 
+{
+    "Type": "AWS::EC2::SubnetRouteTableAssociation",
+    "Properties": 
+    {
+
+
+    }
+},
+
+
+"febpa": {
+    "Type": "",
+    "Properties": {
+
+
+    }
+},
+
+
+"resourceName": {
+    "Description": "-",
+    "Type": "-",
+    "Properties": "-"
+}
+
+
+
+
+
+}

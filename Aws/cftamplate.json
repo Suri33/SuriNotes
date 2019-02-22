@@ -1,0 +1,42 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "First CF Template",
+    "Parameters": {
+        "vpcCIDR": {
+            "description": " enter CIDr Range for your network",
+            "Type": "string",
+            "Defalut": "192.168.0.0/16"
+        }
+    },
+    "Resources": {
+        "SuriVPC": {
+            "Description": "First Network from CF",
+            "Type": "AWS::EC2::VPC",
+            "Properties": {
+                "CidrBlock": "192.168.0.0/16"
+            },
+            "myIGW": {
+                "Type": "AWS::EC2::InternetGateway",
+                "Properties": {
+                    "Tags": [
+                        {
+                            "Key": "Name",
+                            "Value": "FirstIgw"
+                        }
+                    ]
+                }
+            },
+            "attachIGW": {
+                "Type": "AWS::EC2::VPCGatewayAttachment",
+                "Properties": {
+                    "VpcId": {
+                        "Ref": "SuriVpc"
+                    },
+                    "InternetGatewayId": {
+                        "Ref": "myIGW"
+                    }
+                }
+            }
+
+        }
+    }       

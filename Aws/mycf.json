@@ -1,0 +1,60 @@
+        {
+            "AWSTemplateFormatVersion": "2010-09-09",
+            "Description": "Creating Vpc & Subnets",
+            "Parameters": {
+                "keyName": {
+                    "Description": "Select the Key value Pair",
+                    "Type": "AWS::EC2::KeyPair::KeyName"
+                }
+            },
+            "imageId": {
+                "Description": "Enter ur image Id ",
+                "Type": "String",
+                "Default": "ami-076e276d85f524150"
+            },
+            "instType": {
+                "Description": "Select instance TYpe",
+                "Type": "String",
+                "Default": "t2.micro",
+                "Allowedvalues": [
+                    "t2.micro",
+                    "t2.medium"
+                ]
+            },
+            "Resources": {
+                "suriec2": {
+                    "Type": "AWS::EC2::Instance",
+                    "Properties": {
+                        "KeyName": {
+                            "Ref": "keyName"
+                        },
+                        "DisableApiTermination": "",
+                        "ImageId": "",
+                        "InstanceType": {
+                            "Ref": "instType"
+                        },
+                        "Monitoring": "true|false",
+                        "SecurityGroupIds": [
+                            ""
+                        ],
+                        "Tags": [
+                            {
+                                "Key": "Name",
+                                "Value": "Trying"
+                            }
+                        ],
+                        "UserData": {
+                            "Fn::Base64": {
+                                "Fn::Join": [
+                                    "",
+                                    [
+                                        "#!/bin/bash -ex",
+                                        "-"
+                                    ]
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        }
