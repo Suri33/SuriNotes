@@ -1,0 +1,59 @@
+# Cloud Formation 
+
+## Writing CF
+
+
+Json
+AWs CLI installed 
+Visual studio Code ( With Cloud Formation extension)
+
+
+## Creating a CF template for creating VPC 
+
+ Lets Creates manually on UI 
+
+  Region => Mumbai 
+  CIDR  => 192.168.0.0/16
+  Subnets  => 2 Subnets
+    Web :
+        => CIDR => 192.168.0.0/24
+     Data :
+       => CIDR => 912.168.1.0/24 
+
+    # while creating template we might have dependencies (ex :: Subnet needs vpc-id)
+
+    ## Creating things to consider 
+
+* Avoid using default creation in cf template 
+* DOnt write the template which is ver specifix 
+* evry template should display something about what is has created.
+ 
+ ## Create a template for the following 
+
+
+Region => Mumbai 
+  CIDR  => 192.168.0.0/16
+  Subnets  => 2 Subnets
+    Web :
+        => CIDR => 192.168.0.0/24
+     Data :
+       => CIDR => 912.168.1.0/24 
+* Internet gateway 
+* Route table => Should allow all incoming $ out going traffic 
+* 2 Virtual machines (EC2 instance in each subnet)
+
+
+
+
+Steps
+
+   1. Ceate a Internetgateway
+   2. attaht to your vpc
+   3. create a route table 
+   4. In the route table create a route 
+   destiantion 0.0.0.0/16
+     target:igw
+   5. Association your subnets to route table   
+             
+
+### Aws cloud formation parameters              

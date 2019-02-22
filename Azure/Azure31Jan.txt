@@ -1,0 +1,83 @@
+
+ 
+  CERTIFICATIONS ==>
+ 
+Microsoft Azure Solution Architect 
+ Expert
+
+ az 300 & az 301 
+
+ 
+   Multiple choice questions
+   
+   40 - 60 Questions 
+   
+   do something in azure using portal 
+ 
+ Question => points 1 
+
+ 70-535 
+     az 302  
+	 
+	 
+init ==>  !/bin/sh	 
+----------------------------------------------------------------------------
+
+
+ 
+   Azure 
+     Many Services    
+
+
+      Virtual Machine 
+	      => 1. OS 
+		     2. Memory
+			 3. HardDisk 
+			 4. Network Interface 
+			 5. Credentials 
+			 6. Firewalls
+			 
+	Subscription 
+       => Resource Groups
+	          
+			  
+   
+        Azure 
+            Instance Type
+                   => Purpose 
+                     => Families  => Servers Hardware
+                         => Generations 
+            Instance Size 
+                  => RAM
+                     vCPU
+					 SSD
+					 Networking 
+			Region		 
+					 
+					 
+					 
+	=>  All the regions will not have all the families 		
+
+     How Azure Works ?	
+          			
+                 	   
+			 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

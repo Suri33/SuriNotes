@@ -1,0 +1,858 @@
+
+Cloud init ==>
+
+ #!/bin/sh 
+  
+  output "Machine_ip" {  
+  value = "http://$aws_insatance.name.public_ip):8080"
+                      }
+
+
+   AWS Account Info--
+      dropmeram@gmail.com--->Ram4u.123
+      psuri.3345@gmail.com-->Suri.7874
+	  
+	  
+ manage.chef.io ==> dropmesuri@gmail.com--->Suri.7874 
+ 
+  
+  DEVOPS
+  GitHub Login ==> Suri33 --Suri.7874-->github.com  
+  
+ Connect to Server==> ssh username@publicIPV4Address 
+  
+  
+ HOW TO CONNECT TO SERVER:: copy the server  public IPV4 DNS/IPV4 Public Ip and goto .pem loc open BitBash  -->ssh username@ipv4DNS/ipv4 public ip
+------------------------------------------------------------------------------------------------------------------------------------------
+
+27/2018
+----------
+
+CHEF ::
+---------
+
+
+ DEVOPS ENGINEER ::
+		Build/maintain Delivery Pipeline 
+		
+		
+		GIT
+		PACKAGE
+		DEV/QA/PERF/STAGING
+		PRODUCTION SERVER
+  
+  
+1. Creating environment => Create machine  as well 
+
+
+	sudo apt-get update
+	sudo apt-get install tomcat7
+	sudo service tomcat7 restart
+	
+	
+	
+	
+	  
+  AWS ::
+  
+  Giving internet to private subnet  
+    1. Egress only gateways
+	2. NAT
+	   => NAT Instance (EC2 machine with NAT S/W)
+	   => NAT gateways  not free 
+	   
+   ELASTIC IP ==> Static  (charge for not using)
+               => 
+
+ Networkinterface/EC2    Security Group
+ Subnet 				    NACL
+ NACL					    Seucrity Group
+ ALLOW/DENY 				ALLOW
+ stateless					stateful
+ inbound outbound
+ Priority					Any Priorities
+  Protocol    Port   for Whom 
+  
+  Priority   Protocol   Port  ip Action  
+
+
+ 01/2018
+ -----------
+ 
+ 
+   VM 
+     => OS 
+	 => Configuuration
+	    => Processos
+		=> Ram
+		=> Storage
+	=> Networkinterface/EC2
+
+
+ EC2
+    => AMI
+    => Configuration
+            => instance type (Processor +Ram) + Highspeed network
+				=> Predefined Sizes
+				=> Purpose
+				=> instacne family + Generation
+			=> Storage
+			
+			
+			
+	=> On-demand => stop billing stop
+	=> Reserved  => 1 0r 3 years  (60%)
+	      NoUpFront
+		  Partial Up
+		  Complete Up
+		  
+	=> spot 
+        => bidding
+		
+		
+	Exe--1 ::
+------------------------	
+		Bill estimate for 
+		Archetecture 
+		4 subnets
+		
+		2 public
+		2 private
+		1 nat gateway
+		2 eip
+		web ==> gp => 8gb ram => 100 gb ebs==> 2 machines
+		db => storage o=>32 gb  ram  => 1000 ebs   => 2
+
+
+
+--------------------------------------------------------------------------------------------------------------------
+
+
+  	
+		cd 	Change Directory
+		ls	list directory
+		rm 	remove directory
+		ls -ltr
+		sudo vi f1 
+		
+		  
+  AWS ::
+  
+  Giving internet to private subnet
+  
+    1. Egress only gateways
+	2. NAT
+	   => NAT Instance (EC2 machine with NAT S/W)
+	   => NAT gateways  not free 
+	   
+   ELASTIC IP ==> Static  (charge for not using)
+               => 
+
+ Networkinterface/EC2    Security Group
+ Subnet 				    NACL
+ NACL					    Seucrity Group
+ ALLOW/DENY 				ALLOW
+ stateless					stateful
+ inbound outbound
+ Priority					Any Priorities
+  Protocol    Port   for Whom 
+  
+  Priority  Protocol Port  ip Action  
+		
+		
+
+compute
+ => VM => EC2
+              => Network  => Nerwork interface
+			  => Storage
+                   => Hard Disk
+                         => EBS for all root volumes
+						 => Instance Storage 
+						 => EBS  
+						      => types
+							      => h/w => Magnetic/HDD/SSD
+								  => AWS
+								       => SPEED OF HARD Disk
+									       => IOPS ==> 1 => 256kib/some
+										   
+										    
+										   Gp2,PIOPS,Cold HDD, Through HDD 
+										    SSD            HDD 
+										   OK   high      less      high
+										     IOPS          MiB/s
+											 
+											 
+		1GB  = 1000 MB
+        1GiB = 1024 MiB	
+
+                     => Harddisk backup
+					       => Snashots
+						   
+						   
+						   
+						   => Same harddisk for two machines  
+						       => Yes ( Not at same time )
+							   
+							   
+							   
+							   
+							   Harddisk => AZ 
+							   
+							   
+	Elastic Volume -->1 Year old  => No need to stop the machine we can increse the size of the machine Called as Elastic volume.
+	                         => Prior elastic volume we need to stop the machine then we can increse the size of the machine 
+                	
+							   
+	Network Attached Storage  
+    => EFS
+
+
+ Blod Storage
+   => S3 
+							   
+							   
+	s3  bucket will have objects & folders
+  => url => https (http)
+
+      => Permissions
+            => Public 
+			=> Restricted:
+			      => AWS Accounts
+				       => Same Accounts 
+					       => idfferent user 
+					   => Different Account
+		
+         S3 
+                folders => public
+				objects => 
+				
+				
+				
+				bucket public 
+				         => folders 
+						 => objects (public)
+						 
+				IAM  User
+                    => your aws account user
+					=> Admin
+					=> Financial
+					=> Developer
+					
+					=> s3 bucket policy (IAM)	
+						 
+						 
+							   
+							   
+							   
+							   
+hello.txt ==>1
+
+hi 
+
+hello.txt ==>2
+
+how are you 
+
+hello.txt ==>3 
+
+s3 => netflix amazone prime 
+
+
+
+3 videos
+
+==> s3 bucket (public) 
+
+
+Content Delivery Networks
+
+  
+    upload
+	   => one location
+	   
+	   PoP  
+	   
+	Backup  => S3
+    Archival => Glacier
+
+
+     1000 TB
+	 
+	  10  MBPS
+	  100 MBPS
+	  1   GBPS
+	  10  GBPS
+ 	
+	  
+
+DATABASES :
+
+1. PAAS (RDS)
+	=> Need not care about underlying os => AWS
+	=> DBMS 
+	  
+	 mysql with 5.7 ,maria db,aurora mysql,postgres,aurora postgres,oracle ,sql server 
+	 
+	  specific dbms & specific versions 
+	  
+	 instances & Storage  
+     backups (7) 
+     minor updates  
+ 
+       Replications:
+            just easy 
+			
+       High Availability  
+	   
+	    db.2.micro 
+	        
+            	   
+	  
+2. SAAS 	  
+						   
+							  
+	 oracle 	   
+
+		
+										   
+						 
+  
+  
+
+
+
+NAT     --> ONE WAY CONNECT 
+INTERNET -->TWO WAY CONNECT 
+
+
+     
+	   VPN  => 1. Point to Site
+		  2. site  to Site 
+		  
+		  
+		  
+		  
+		  
+		 1. VPC Peering   
+		 
+		 
+ ami's 
+
+ AUTO SCALING ==>  
+ 
+      Load Balancing 
+	  
+	     ==> classic LB layer ==> (Costly when compare to Both) 
+		 
+		 ==> Network LB       ==> only on TCP 
+		 ==> Application LB   ==> only on HTTPS
+		 
+		 
+		       ==> Health Checks 
+		       ==> DNS (Route 53)
+			   
+			 dev.swiggy.com 
+                ==> dev lb 
+             test.swiggy.com 
+                ==> Test lb 
+
+				swiggy.com 
+				 ==> Prod lb
+   
+
+
+
+
+
+   AWS ADMINISTRATION :::
+ ---------------------------
+   
+   1. Creating infra services 
+   
+   
+   CLI (AWS) 
+   
+   Network
+   EC2
+   Storage 
+     HardDisk 
+	 Network Storage 
+	 Blob Storage (S3) 
+   DATABASES
+   VFN Scenarios
+
+
+Creating PAAS Services 
+
+  1. Elastic Bean Stack      
+	 
+      
+	  
+AWS Commandline intrface
+  Secret Key,
+  Access Key 
+
+
+  UserManagemnet => IAM 
+
+
+aws configure ==>   
+
+
+   aws <service> actions/command  parameters   
+    
+
+  
+  aws s3 mb 
+  
+  
+  script => aws cli 
+  
+  
+  
+  Network => VPC 
+       ipaddress range => cidr 
+	   
+	   
+	      private networking 
+		       => private ip ranges 
+			            192.168.0.0/16 
+						   192.168.x.x
+							 
+							 
+					192.168.0.0/24 
+                       192.168.0.x					
+  
+  
+		Network =>  VPC => Region  => Range => vpc-id  		
+  
+        Subnet  => Range (part of vpc range)=> AZ  
+		
+		 
+		 
+		 ytRQ2kKQxNuNTJa3YSN0t43WpBMvveD9FX1C4gtd
+		 
+		  
+		  
+		  aws ec2 start- instacnes --instance-id <id> 
+		  aws ec2 describe-instances instance-id <id> 
+		  
+		  
+		  
+	 describe commands ==> how do i narrow down on what i want 
+		  
+		           jq ==>JsonQuery
+				   
+		 
+		 
+    
+	
+	
+	1. NAT INSTACES (Ec2 with nat s/w in public subnet => rt => nat instance (static public)
+	2. NAT GATEWAY   nat gateway public subnet rt => nat gateway 
+	3. EGRESS ONLY IGWS
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+     Access key  ==> 6MAwY5g8ZLUkVMan+pwDRaH+unSuJkuQ7oZivOmg
+  
+     Secret key  ==> AKIAJ5ITVTHS6FJQUEXQ
+	 
+	 
+	 
+	 
+	 
+	 Create EC2 with LAMP and Stress by tomorrow class ==>28-Dec 
+	 
+	 
+	 
+	 AUTO SCALLING ::
+	 
+	 services => ec2 => auto scaling => create launch configuration => 
+	 
+	 
+	 
+	 AWS LOAD BALANCERS ==>
+	------------------------------- 
+	 Classic      => TCP ,HTTP,HTTPS 
+	 Network      => TCP
+	 Application  => HTTP, HTTPS
+	 
+	 
+	 
+	 DNS ROUTE 53 ==>
+ -----------------------
+        EC2 ==> LOAD BALANCER => DNS (ROUTE 53)  
+		
+		   End users have the DNS IP Address 
+		   
+		   
+		###################################31-DEC-2018####################################################################   
+		   
+		   
+		   EC2 => Network  (Network Interface) (Static ip EIP) 
+         
+      hardDisk => EBS/Instacne Store	
+
+ 
+
+    EC2 => instance Type ( Running ) => cost 
+	
+        => EIP (Not running )
+		
+        => HardDisk (Always)	
+		     => Volumes 
+			      => Root Volume  (OS)    EBS  
+				  => Secondary Volume     Instance-stores (some instance types)\
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				   Create HardDisk and formatting that drive and attach that volume to EC2 
+				  => lsblk 
+				  => sudo mkfs -t ext4 /dev/xvd 
+				  => sudo mkdir <dirname>
+				  => sudo mount /dev/xvd <dirname>
+	  
+	  
+	 
+	 
+  
+  
+      HARD DISK => one ec2 machine at a time 
+  
+  
+  
+   EFS => Elastic File Storage 
+
+
+
+     Network Storage => EFS 
+		Hard Disk    => EBS 
+	
+	 SQL 
+	 
+	 
+	 
+	 
+	 
+	  mvn package 
+	      => copy target /war files into EFS 
+  
+  
+  
+ ####################################DEC -04-2019 ####################################3
+ 
+ 
+        DATABASES 
+		
+		
+		    
+			
+			
+			RDS => BD Services=> mySQL,mariaDB,aurora (mysql & postgres )oracle ,SQL Server 
+			
+			   PAAS 
+			EC2 => 
+                 IAAS 
+				 
+				 
+				  vpc 
+				   => subnets => DB Subnet group 
+  
+  ######################################################08-Jan-19#############################################################
+  
+     
+     	 S3  => Blob Storage   ==> Binary Large Object
+		 
+		 => https url 
+		 
+		 => Any file format 
+		 
+		 => Unlimited 
+		 
+		 => Files 
+		     => individual file > 5TB 
+			 
+			=> Bucket 
+               => files (S3 objeccts)
+               => folders 
+
+		 
+		    
+		 
+		 
+		 Dropbox => 1GB 
+		    1. 																																																																																																				
+			2. 
+			
+			
+			
+			S3 =>
+			    
+				
+				 1. bucket 
+				  
+				   share: 
+				   
+				   
+				   1. Any one (public access)
+				   2. shared with aws users 
+				   
+				   
+		costs
+             => 2 
+               1. Storage
+			   2. Accessing 
+			       Http methods 
+				   GET 
+				   POST 
+				   PUT
+				   DELETE 
+				   
+				   Redundancy 
+				   
+				   
+				   
+				   
+				   
+				   
+				   
+				   Trending Data 
+				   100 MB Storage
+					
+                   10,000 days 
+
+				   
+
+                100 MB => storage 
+               
+                0.1 => access 			   
+				 
+                				   
+				   
+				   
+				   storage class 
+				   
+				         => cost plan for storage 
+						 => cost plan for Access 
+						 => Redundancy levels 
+						 
+						 
+						 standard
+						    => more for Storage & less for Access 
+						    Redundancy is high 
+							
+						 Infrequent Access 
+						      => less  for storage & More  for Access 
+						 Reduced Redundancy 
+						    => 
+						 Glacier 
+						    => Archival storage 
+							     => very less storage  cost 
+								 No Access  
+								 
+								 
+####################################################21-JAN-2019#####################################################################								 
+								 
+				   
+				   
+				   sudo apt-get update 
+				   
+				   sudo apt-get install stress -y 
+				    
+				
+        cpu > 70 (5 min)
+         
+             => action (Sending mail ) => SNS topics 
+                                            => sending mail 			 
+				   
+				   
+				   
+##################################################24-JAN-2019###################################################################
+
+    VSphere
+    HyperV
+            
+           => AWS Cloud as ec2 machines 
+       
+      SMS (Lift and Shift) 
+
+
+  => VM 
+      => Image 
+
+  => AWS Services (dont use)
+      => Packer 
+      => terraform 
+
+  Database Migrations 
+        => Lift & Shift 
+		
+  offline 
+     => Export Database
+	 
+     => Import Database 	 
+				   
+###########################################26-JAN-2016##########################################################################
+
+    
+      Database 
+
+      
+  1. Source => mysql, Postgres, SQL Server, Oracle
+      target => RDS 
+	  
+	  offline 
+	      => backup of source db 
+		  => import backup 
+  2. DMS 
+
+        => Aurora (mySql rewritten by Amazon for performance improvement)
+		                  (postgresSql)
+						 
+   => Oracle  => Aurora 
+      
+       Schema Conversion Tools 
+       DMS 
+         
+            => Source            replication                      Target	
+				   
+				   
+############################################29-JAN-2019#########################################################################
+
+
+ 
+ Templating 
+
+   
+   Infrastructure 
+
+          => Website ( Console )
+		  => CLI
+		  => Template (json / yaml files) IAC 
+		  
+		  
+		  
+		   
+    json 
+
+    xml 
+     
+    	 name value pair 
+		 
+		 
+		 
+    {
+		 "city": "Hyd" 
+		 
+		 <name>: <value>
+		 "price": 10.24
+		 
+		 <IsCODAvailable>: false/true 
+		 
+ 
+        "manufacture": "Lenovo"  
+		`
+		"color": ["Black", "white", "red", "blue"]
+				   
+		"Address": {
+                   
+             "street": "Mythrivanam",
+			 "pincode": "560037",
+			 "city": "Hyderabad" 
+					 
+				   }		
+				   
+	}
+	
+	
+	{
+	 
+	 "floormap":
+	    {
+		"G": [
+		    {  
+			 "number1": "G-1",
+			 "name": "Samsung"
+			
+			},
+			{  
+			 "number2": "G-2",
+			 "name": "Shoppers Stop"
+			}
+		],
+		
+		"First":[ 
+		     { 
+		   "number": "F-1",
+		   "name": "PVR"
+		     }
+			 
+		  ]
+ 		
+		}
+	}	
+	
+	
+	
+	
+	
+	}
+	 
+  
+  
+   => CareerObjective
+   => ProfessionalSummary
+   => SkillSets
+   => WorkExperience
+   => Contact 
+    
+	
+	Journey
+	typeOfJourney
+	Distance
+	JourneyTime
+	
+	
+	
+  WRITE A TEMPLATE 
+     => Cloud Formation
+		Json
+		Yaml 
+		
+		 
+		 => Infrastructure => Ideampotant  & Reusable ( Same State )
+	
+	
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

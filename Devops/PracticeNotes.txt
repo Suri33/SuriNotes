@@ -1,0 +1,77 @@
+
+Hi Team,
+	
+	  This is Suri, Im a Student Iam using Amazon Web Services for my learning and practice purpose .
+      I am  created and using free tier  Account. I don't know which are payable resources. 
+      Could  you please guide me which are  free resources
+      So please excuse from the bill  amount on  January 2019
+
+
+ CLOUD FORMATION:
+ 
+  Awtemplate version,
+  Description,
+  Parameters,
+  Resoruces,
+  Outputs,
+  Tranforms.
+  
+  
+  
+  TERRAFORM==>
+  
+    Template Version,
+	providers,
+	variables,
+    Resources,
+	Datasource,
+	Modules,
+	
+	
+	
+	
+	
+	DOCKER ==>
+	
+	Dockefile 
+	  
+	 modes => attached/detached 
+	 CMD
+	 RUN 
+	 ENTRYPOINT
+	 
+     Port forwarding
+	 volume Creation
+	 Networks => Bridge/Overlay
+	 
+	 
+	  
+	  
+	  Directly we can call images  from Registry
+	  
+	  Orchestration ==>
+	  docker swarm
+	    => connecting Docker nodes with overlay network 
+		
+	  docker Kubernetes  => k8s 
+	
+
+  AWS EC2 Instance Launch ==>
+
+        1. Choose Ami(Amazon Machine Image) ==> Select OS which one you want/required
+		2. Instance TYpe => T2.micro,medium,large ---
+		3. Configure Instance => Select No.of Instances,VPC,Subnet and IAM role,
+		         Advanced ==> User Data { We can Do Provision }   
+		4. Select Storage => Volume type,Size 
+		5. Tags 
+		6. configure security Group 
+		7. Review 
+		    => Select an existing Key pair or create a new key pair   
+	  
+	  
+	  
+	  
+	  
+	
+  
+  

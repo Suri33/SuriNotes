@@ -1,0 +1,59 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "Creating Vpc & Subnets",
+    "Resources": {
+        "myvpc": {
+            "Type": "AWS::EC2::VPC",
+            "Properties": {
+                "CidrBlock": "192.168.0.0/16",
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": "ntier"
+                    }
+                ]
+            }
+        },
+        "webSubNet": {
+            "Type": "AWS::EC2::Subnet",
+            "Properties": {
+                "AvailabilityZone": "us-west-2a",
+                "VpcId": {
+                    "Ref": "myvpc"
+                },
+                "CidrBlock": "192.168.0.0/24",
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": "WEB"
+                    }
+                ]
+            }
+        }
+    },
+    "dataSubNet": {
+        "Type": "AWS::EC2::Subnet",
+        "Properties": {
+            "AvailabilityZone": "us-west-2b",
+            "VpcId": {
+                "Ref": "myvpc"
+            },
+            "CidrBlock": "192.168.0.1/24",
+            "Tags": [
+                {
+                    "Key": "Name",
+                    "Value": "DATA"
+                }
+            ]
+        }
+    
+	}
+	
+	
+}
+}
+
+
+
+
+

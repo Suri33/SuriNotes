@@ -1,0 +1,640 @@
+
+
+   Generaliging Image ==> sudo waagent -deprovision+user
+   
+  SubId ==> 091c43d4-ebac-49dc-832a-0f6bbcfb6bce
+  Tent Id => 0f3f266f-60f7-417e-82c3-7cf93cc48e6e
+  "appId": "b5487998-9a7b-4d4c-a9ed-f469d75654c8",
+  "displayName": "azure-cli-2019-01-25-02-08-27",
+  "name": "http://azure-cli-2019-01-25-02-08-27",
+  "password": "312e50f4-3ae1-4778-969a-f944d673fe4b",
+  "tenant": "0f3f266f-60f7-417e-82c3-7cf93cc48e6e"
+  
+  28-Dec ==> 228-635-411
+  
+  dropmesuri@gmail.com ==>  
+
+How to Login into VM => Open Run Prompt => mstsc-v ipaddress
+   
+     RESUME  pOINTS ::
+ ------------------ 
+  => OMS workSpce
+  => Metrics 
+  => Logs 
+
+
+ERROR POWERSHELL LOGIN ISSUE::
+Set-ExecutionPolicy unrestricted  ==>A 
+
+
+Azure info..
+    Microsoft Account --->
+  suri.polavarapu@gmail.com  -->Suri$7874
+  
+  VM login deatils
+  
+  suri-->>motherindia@1234  
+
+NSG ==>Network Security Group   
+  
+  
+  write a powershell script which will display All the numbers which are even from 1 to 100
+  for (i=0;i<=100;i
+  
+  ++)
+     if (n%i==0)
+	 print i  
+  
+  
+  
+  var i;
+for (i = 0; i < 1000; i++)
+if ((i % 2) == 0)
+  document.writeln(i) 
+  
+  1..20 | % { if($_ % 2 -eq 0 ) 
+               {"$_ Even Numbers are 1 to $"} 
+			 }
+			 
+			 
+			 
+			 $index = 1
+			 
+			 
+		OBJECT ::
+-----------------------------
+
+			
+			
+			
+			
+			
+			
+			
+			FOR HELP ::
+			--------------------
+			         -------THSI IS CMD----- 
+			Get-Help NewAzureRmResourceGroup online  ==> For online Help MS commands
+-----------------------------------------------------------------------------------------------------------------------
+
+     $Location = "centralus" 
+     $resgName = "networkfromps"
+
+# Create a Resource group
+ $netwrokresg = New-AzureRmResourceGroup -Name $resgName 
+                                          -Location $Location
+
+# Create a Network
+ $network = $New-AzureRmVirtualNetwork  -Name "ntier"  
+                                        -Location $Location 
+										-AddressPrefix "10.0.0.0/16" 
+										-ResourceGroup $resgName
+# Creating a web  subnet
+  $webSubnet = $Add-AzureRmVirtualNetworkSubnetConfig -Name "web" 
+                                                      -AddressPrefix "10.26.0.0./24" 
+													  -VirtualNetwrok  $network 
+# Creating a  Business Subnet
+ $businessSubnet = $Add-AzureRmVirtualNetworkSubnetConfig -Name "business" 
+                                                          -AddressPrefix "10.26.1.0./24" 
+														  -VirtualNetwrok  $network
+# Creatting business subnet
+ $
+# Create windows vm in Business Subnet
+
+
+
+
+  VM
+     => Network
+	 => Image
+	 => Size of VM
+	        => Family   => Generations
+			=> Sizes
+			    => vCPUS(Cores), RAM			
+	 => Harddisk
+	     => Root / Other disks: 
+		 => Temporary ==> D:
+     => Extensions
+     => Cloud init 	 
+	 
+	 
+	 
+	 Task:: from Azure CLI
+	 -------------------------
+	 B1s
+	 public ip address
+	 managed disk
+	 os ==> Ubuntu
+	 subnet => web
+	 
+	 
+	  Task:: from Azure Powershell
+	 -------------
+	 B1s
+	 public ip address
+	 managed disk
+	 os => windows server
+	 subnet => Business
+	 
+	 windowsmachine.Bs1
+	 linuxmachine.sh/
+	         --> az vm create 
+	 
+    
+	
+	json format 
+	
+	
+	json 
+     [
+	 
+	 
+	 
+	 
+	 
+	 ]
+
+			
+			
+			
+			
+			
+			
+az network vnet list 
+
+
+
+Querying json in azure is using jmes
+			
+ CREATING STORAGE FROM CLI --> az storage account create --name storagefromcli2 
+                                                         --resource-group surigrp 
+														 --kind StorageV2 
+														 --sku Standard_LRS			
+			
+	Getting resource group with specific Location::
+	
+	---> Get-AzurermResourceGroup | where-object Location -eq "centralus" | Select-object ResourceGroupname		
+	
+	Get-AzureRmStorageAccount | Select -object ResoruceGroupName ,Location
+	
+	Getting For Virtual network ::
+	
+	Get-AzureRmVirtulNetwork 
+	
+
+      Hard Disk ::
+	  
+	  => Storage Account 
+	       => Different kinds of storage 
+		     => Page Blob
+			 => Block Blob
+			 => Append Blob
+			 Table Storage
+			   => No SQL Data
+			 File Share
+                 => Network Attached Storage ( SMB 3.0)
+			Queue Storage 
+              => Messsage Queues 			
+
+  
+
+            Different Storage Subscriptions 
+			 => Premium
+			 
+    stop  ( deallocate)
+	generaliuze ==> removing user specific information 
+	reusable vm image 
+
+
+creating custom image azure cli   ==> google it 
+creating custom image azure powershell ==> google it
+
+
+	
+		UNIX IMAGE CREATION :::
+--------------------------------------------------------------------------------------		
+			Create Virtual Mcahie  ==> ubuntu 16
+			   install werbserver  ==> tomcat8
+			   login with ubuntu in gitbash (Using public ipv4 from VM)
+			   ==> sudo waagent -deprovision+user -force
+			   Deallocated ane mark the VM as Generalized 
+			   ==> az vm deallocate --resource-group $GrpName --name $VMName
+               ==> az vm generalize --resource-group $GrpName --name $VMName
+             Image Creation :
+	----------------------------------------------------------------------------------------
+              ==> az image create --resource-group $GrpName
+                                  --name $ImageName
+                                  --source $VMName		
+     TO SHOW IMAGE LIST ==> az image list --output table
+	 
+	 
+	WINDOWS IMAGE CREATION ::
+--------------------------------------------------------------
+
+Create Virtual machine ==> WinSrv2016
+Download RDP and Conect to the WinSrv2016
+
+# Stop-AzureRmVM  -ResourceGroupName grp -Name suriwinsrv -Force
+# Set-AzureRmVM   -ResourceGroupName grp -Name suriwinsrv -Generalized
+   								  
+        			   
+
+
+Azure CLI  VM Creation ==> az vm create --name mynode1 
+                                        --resource-group nwfromcli 
+                                        --image win2016datacenter 
+                                        --admin-username suri
+                                        --admin-password Suri.polavarapu
+										
+										
+										
+										
+
+     
+	 
+	 
+	 SAAS ==>   
+
+        Market Place
+		DBA 
+	    
+		oracle,DB2, Terradata, Informatica, SAP HANA 
+	  
+	 
+	 
+	 
+	 
+	 
+	 PAAS ==>
+        Azure SQL 
+		   -- SQL Server
+		   -- POSTGRES
+		   -- mySQL
+		   
+		   
+		   1. Create 
+		   2. BackUps
+		   3. Replications (Geo Replications)
+		   4.Performance Analyzer 
+		   
+		   
+		   
+		   az group create --location centralus --name surigrp
+az sql server create --location centralus --name surisqldemo --resource-group surigrp  --admin-user suri --admin-password Motherindia@7874
+az sql db create --name suridb --resource-group surigrp --server surisqldemo --service-objective Basic 
+   az sql db list 
+   
+    
+   B1s   => 1 vcpu 1 GB RAM 
+   
+  
+    1. Monitoring 
+	2. Replications
+	3. Migrations 
+	4. VPN 
+	
+	
+	
+	 
+	 
+	
+RACL  	
+	   
+	   
+	windows Virtual machine    
+ Get-Item . ==>
+ 
+ Linux VM 
+ apt-get update 
+ apt-get install apache2 -y 
+
+
+
+
+  Monitor + Alerting 
+  Log Analytics 
+  
+  
+  Applications insights 
+  
+  
+  
+   
+ 
+		   
+		   
+		   
+		    
+  
+     
+										
+	backup
+    disaster recovery 
+	
+	fault tolerance 
+	
+	
+	  => Additional cost 
+
+
+    what has to be backed up/set up for DR 
+	
+	1. Hard Disks  (VM's)
+	
+	2. SQL  9Applications Data backup)
+	
+	3. PASS (web services/App Services/aks)
+	
+	4. VM's in on-prem
+     
+    
+
+  Replications 	
+  
+  
+    
+	
+	server Migration 
+	
+	VM (on-prem ) to cloud 
+	
+	Site Recovery 
+	
+	
+	hard disks 
+	   => Managed disk 
+	   => Storage Account 
+	
+	
+	
+	==>create storage account take hard disk babkup 
+	
+	
+	
+	login to ubuntu 
+	
+	sudo df -h 
+	
+	sudo apt-get update 
+	sudo apt-get install git apache2 -y 
+	sudo apt-get install tomcat  -y
+	sudo apt-get install tree -y 
+	
+	
+	
+	
+	1st => full backup
+	2nd => incremental backup 
+	
+	 
+	 
+	 1. Create a VM with managed disk 
+	 2. take snapshot of managed disk 
+	 3. Restore/create a new VM with snapshot 
+	 
+	 
+	 
+	 
+	 
+	 Disaster recovery   ==> Cfg Disaster Recovery  
+	 
+	 
+	      goto Vm ==> Disaster recovery => 
+		  
+		  
+		  
+		  
+		  ==> Replica ==> Source => Location ==> resource Group
+	 
+	 
+	
+	
+ Migration of a physical machine to Azure
+    vm ware to cloud 
+	hyper-v to cloud 
+	
+	
+	Azure site recovery 
+	
+	replication on-premise	and azure 
+	
+	stop replication 
+	
+	aws to azure 
+	
+	
+	
+	  goto aws account create  winserver 2016
+	  
+			
+			
+			
+   ##############################################08-jan-2019###################################################################
+
+
+    Databases => 
+       
+        files in text format 
+        
+		unstructured data 
+		
+		structured data 
+		
+		Relational Data 
+		
+		
+		
+		data  in unstrctured => structured format 
+		
+		json format 
+		 => structured 
+		 id 
+		 
+		 
+		 id   Name       purpose 
+		 1  sabarmati     visit 
+		 
+		 id    Name   date    how 
+		 
+		 
+		 
+		 NOSQL 
+		 
+		 
+	   Performance Tuning 
+       Replications 
+       Backups 	   
+	   
+	   
+	   
+	   
+	   => SQL Servers/Postgres/Mysql
+	   
+	   
+	   CREATE SQL DATABASE ==> 
+	   
+	All Services => sql databases 
+	        ==> Click  Create 
+			              => Name 
+						  => Resource Group 
+						  => Dummy Data Sample 
+						  => server   ==> new Sever ==> create server username,password,location 
+						  => basic 
+						  =>    Click on Create 
+		 
+
+             Goto=> Geo Replication 
+			        => select target region 
+					=> 
+  
+		 
+		    Sync to other databases ==> 
+			
+#################################################10-JAN-2019####################################################################
+
+    Active Directory ==>
+	
+	
+	   
+	  Create a Virtual Machine => WindowsServer2016 
+	                            
+						       => Login to WinSrv16
+							   
+							  Open Server Manager => Click on  Add Roles &  features
+                                                        =>Nxt => select  Role & Feature =>  
+                                                             => Select  Active directory Domain Services 
+																=> Nxt => Nxt => Nxt 
+																
+												Goto Notifications => Add a New Forest => SuriAzure.com  => Nxt => Nxt => Nxt			
+																
+																SuriAzure => (NetBiosName/DomainName)
+													 How to Login into VM => mstsc-v ipaddress 	 
+
+                                                  LoginInto Machine Using ==> SuriAzure/USername 
+
+                                                  => Goto Tools 
+												  => New Group 
+												         => AzureAdmin 
+												=> New user 
+                                                        => QTAzure											
+																
+																
+#########################################################11-JAN-2019####################################################################
+
+      
+    Admins => add user1,user2 to the admins group 
+
+        => user1 (Iron Man)
+		=> user2 (Super Man)
+
+	User1 (Iron Man)			   
+		 Installation chocolatey login with user1 
+      
+	User2 (Super Man)
+	       install Chrome through Choco login with user 2 
+     		
+			Error ==> This user is not authorizes for the remote login 
+			then login with admin access then make users to enterprise admins then is will work 
+			Set this users to enterprise Admin group 
+			
+
+
+==> run the  refreshenv cmd  in Powershell or Relaunch the Powershell In Administrator Mode  		
+		
+		
+		
+		User => Enterprise Admins => BuiltIn => Administrators => Select RemotLoginAcees ==> Add Remaining users to this group
+     => Guest ==> Make the remaining users to Guest Group then those users to login sucessfully
+
+ Computers => 
+
+
+   ###################################21-JAN-2019############################################################################
+     ARM TEMPLATE ==>
+	--------------------------
+
+	
+  IAC ==> Infrastructure as A Code 
+          
+   NewResourceGroup => ArmDemo21Jan
+
+        Storage Account => ArmStorageAccount => Create 
+        Disks => Create managed Disk ==> ArmTestDisk ==> ResGroup => ArmDemo => Size 1GB 	
+     
+	  
+	     ResourceGroup ==> Automation Script   => Download the template ==> Extract the downloaded file 
+		 
+		  Visual Studio 2017 
+		  
+		    => File =>  New Project  
+			    
+				
+				
+		
+JSON FORMAT ==>
+------------------------
+     {
+
+         "name": "suri",
+		 "learning": ["Devops,Aws,Azure"],
+		 "address":  {
+		              "BuidingNo": "1-2-345",
+					  "street": "xyz-Nagar",
+					  
+					 }
+					  
+    
+ 	}
+	 
+#################################################25-JAN-2016####################################################################
+
+
+  
+     Parameters ==> We can't get from the Azure 
+     Variables  ==> We can get from the Azure	 
+  	
+	
+	
+
+
+###############################################27-JAN-2019############################################################################
+
+  
+         
+print "Hi"
+print "hlo"
+
+
+["hi","hlo","welcome"]
+
+  
+
+  copyfunction 
+
+   name 
+   size
+   batch: 1
+   mode: "serial"/"parallel"   
+   
+   
+   
+   
+    nestedTemplate
+	linkedTemplate 
+		 
+	 
+	 
+		         
+	    
+         	 
+        			   
+			
+  
+       
+			
+			
+          
+  
+
+
+	  
