@@ -1,3 +1,24 @@
-az group list 
 
-az group create -n surigrp -l centralus
+# Display Resource Group List
+az group list --output table
+
+# Create Resource Group
+az group create -name surigrp -location centralus
+
+
+# Creating VNet 
+az network vent create -g "surigrp" -n "suriVNet" --address-prefix "10.10.0.0/16" --subnet-name "web" --subnet-prefix "10.10.0.0/24"
+
+# Creating Subnet 
+az network vnet subnet create -n "data" -g "surigrp" --vnet-name "suriVNet" --address-prefix "10.10.1.0/24"
+
+# Create Network  with address range 192.168
+# Add subentes to N/W 
+  * Name : Web  ,range :192.168.0.0/24
+  * Name : Data, range : 192.168.1.0/24
+  * Name : Business, range : 192.168.2.0/24
+  * Name : Mgt, range : 192.168.3.0/24 
+
+# Creaing Same Netwrok in PowerShell
+ 
+ 
