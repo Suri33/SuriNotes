@@ -1,0 +1,43 @@
+# Resource Group
+az group create --name mygrp --location centralus
+
+# VNET Creation 
+az networssk vnet create -g mygrp -n myvnet --address-prefix 10.10.0.0/16 --subnet-name mysub1 --subnet-prefix 10.10.0.0/24 
+ # Delete 
+ az network vnet delete -g mrgrp -n myvnet 
+ # List
+ az network vnet list --output table 
+
+# Network NSG Creation
+az network nsg create -n mynsg -g mygrp 
+# Delete
+az network nsg delete -n mynsg -g mygrp 
+# List 
+az netwrok nsg list --output table
+
+# Network NIC Creation 
+az network nic create -g mygrp --vnet-name myVnet --subnet mySub1 -n mynic --network-security-group mynsg
+# Delete 
+az network nic delete -g mygrp - mynic
+# List
+az network nic list --output table
+
+# Public-IP Creation 
+az network public-ip create -g mygrp -n myip --allocation-method Dynamic
+# Delete
+az network public-ip delete -g mygrp -n myip
+# List
+az network public-ip list --output table
+# Show 
+az network public-ip -g mygrp -n myip --output table
+
+# DiSK Creation 
+az disk create -g mygrp -n mydisk --size-gb 10 
+#Delete
+az disk delete -g mygrp -n mydisk -y --no-wait
+# List
+az disk list --output table 
+
+
+# VM Creation
+az vm create --resource-group mygrp --name vmplay --image UbuntuLTS --admin-username suri --admin-password Suri.Polavarapu

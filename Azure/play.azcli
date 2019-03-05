@@ -1,0 +1,2 @@
+
+am vm create -n surivm -g surigrp --admin-username Suri --admin-password Suri.Polavarapu --authentication-type password --nsg surinsg 

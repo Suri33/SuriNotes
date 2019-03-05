@@ -30,3 +30,15 @@ $ mgtsub = New-AzureRmVirtualNetworkSubnetConfig -Name Mgtsub -AddressPrefix "10
 Add-AzureRmVirtualNetworkSubnetConfig -Name backendSubnet -VirtualNetwork $virtualNetwork -AddressPrefix "10.10.2.0/24"
     $vnet | Set-AzureRmVirtualNetwork
 
+
+ # Network Security Group 
+ 
+ az netwrok nsg create -n surisng -g suri
+
+ # Network deleted 
+
+ az network nsg delte -n surisng -g suri 
+
+ #  Add Nsg Rules
+
+ az network nsg rule create -g suri -n rule1 --nsg-name surinsg --priority 300 
