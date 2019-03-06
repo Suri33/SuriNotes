@@ -1,0 +1,122 @@
+  
+  AWS ::
+  
+  Network
+  2 Subnets
+    linux vm in 1 subnet
+	win   vm in 1 subnet
+	
+	1.Resource Group
+	 =>
+	 
+	 Network in Azure 
+	 => Routing 
+	 => Public subnets/ Nat 
+	 
+	 1. create a resource group
+	 az <resource > <child resource > create/delete
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------	 
+	
+ 
+  Giving internet to private subnet  
+    1. Egress only gateways
+	2. NAT
+	   => NAT Instance (EC2 machine with NAT S/W)
+	   => NAT gateways  not free 
+	   
+   ELASTIC IP ==> Static  (charge for not using)
+               => 
+
+ Networkinterface/EC2    Security Group
+ Subnet 				    NACL
+ NACL					    Seucrity Group
+ ALLOW/DENY 				ALLOW
+ stateless					stateful
+ inbound outbound
+ Priority					Any Priorities
+  Protocol    Port   for Whom 
+  
+  Priority   Protocol   Port  ip Action 
+------------------------------------------------------------------------------------------------------------------------------------------------------------------  
+
+  
+  AWS ::
+  
+  Giving internet to private subnet
+  
+    1. Egress only gateways
+	2. NAT
+	   => NAT Instance (EC2 machine with NAT S/W)
+	   => NAT gateways  not free 
+	   
+   ELASTIC IP ==> Static  (charge for not using)
+               => 
+
+ Networkinterface/EC2    Security Group
+ Subnet 				    NACL
+ NACL					    Seucrity Group
+ ALLOW/DENY 				ALLOW
+ stateless					stateful
+ inbound outbound
+ Priority					Any Priorities
+  Protocol    Port   for Whom 
+  
+  Priority  Protocol Port  ip Action  
+ ---------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+ 
+ DEVOPS ::
+-------------------
+
+
+  
+		    RAM
+		
+		
+		     CPU
+		
+				=> Who does 
+					OS
+					
+					
+					Ram => 
+		
+			3 5
+			
+			
+			datatype 
+				=> simplex => predective size
+				=> complex => can not predective  the size\
+				
+				
+		char ='a' 
+				 'hi' 
+					'hello' 
+					
+					
+					variable/constant ==> alias to memory ddress
+					
+					const int i = 0
+					
+					      int j = 1
+				operations 
+
+					add,sub,mul,div
+					
+					index,count,substr
+					
+					and or nor 
+					
+					
+					simpleinterest
+					
+					input =>
+					rateof interest =
+					principal 
+principal = 1000
+ rate = 2 * 12 
+ interest = (principal * 1 * rate) / (  12 * 100)					
+					
+--------------------------------------------------------------------------------------------------------------------
+
+
+ 

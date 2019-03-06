@@ -1,0 +1,106 @@
+
+
+ root user-->
+ 
+			adduser ansible
+			pswd:----
+			retype:---
+			
+			visudo--->ansible All :All NOPASSWD:All
+			 sudo vi /etc/ssh/sshd_config
+			 set --> password auntnetication yes
+			  su -service ssh restart
+			  su ansible
+			  
+ sudo apt-get update
+ sudo apt-get install software-properties-common
+ sudo apt-add-repository --yes --update ppa:ansible/ansible
+ sudo apt-get update
+ sudo apt-get install ansible -y
+
+to check wether ansible installed or not 
+  ansible --version
+  
+  
+  
+  
+  
+ NODE -1 CREATION 
+--------------------------------------------- 
+ 
+ 
+ 
+ root user-->sudo apt-get update 
+			adduser ansible
+			pswd:----
+			retype:---
+			
+			visudo--->ansible All :All NOPASSWD:All
+			vi /etc/ssh/sshd_config
+			  password auntnetication yes
+			  service ssh restart
+			  su ansible
+			  
+$ sudo apt-get update
+$ sudo apt-get install software-properties-common
+$ sudo apt-add-repository --yes --update ppa:ansible/ansible
+$ sudo apt-get update
+$ sudo apt-get install python
+
+to check wether python installed or not 
+   ==> python --version
+  
+  
+  NODE-2 CREATION 
+ --------------------------------------------- 
+  
+  
+  root user-->sudo apt-get update 
+			adduser ansible
+			pswd:----
+			retype:---
+			
+			visudo--->ansible All :All NOPASSWD:All
+			vi /etc/ssh/sshd_config
+			  password auntnetication yes
+			  service ssh restart
+			  su ansible
+			  
+$ sudo apt-get update
+$ sudo apt-get install software-properties-common
+$ sudo apt-add-repository --yes --update ppa:ansible/ansible
+$ sudo apt-get update
+$ sudo apt-get install python
+
+to check wether python installed or not 
+ ===> python --version
+			  
+	we can do in Main Ansible server the below steps::
+	
+ssh-keygen
+ssh-copy-id username@localhost
+ssh-copy-id username@pricateDNS ip
+ssh-copy-id username@privateDNS ip 
+cd /etc/ansible
+ ls 
+sudo nano hosts
+   --here we can add three name in 
+   
+localhost
+privateDNS
+privateDNS
+
+ansible -m ping all
+ 
+			  
+			  
+  login  into Ansible ==>
+  
+    ssh-keygen
+	ssh-copy-id user@localhost
+	ssh-copy-id username@privateDNS
+	ssh-copy-id usermame@privateDNS
+	
+	===> ansible -m ping all
+	
+	here we can show nodes are pinged or Not

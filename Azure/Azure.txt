@@ -1,18 +1,8 @@
 
-
-   Generaliging Image ==> sudo waagent -deprovision+user
-   
-  SubId ==> 091c43d4-ebac-49dc-832a-0f6bbcfb6bce
-  Tent Id => 0f3f266f-60f7-417e-82c3-7cf93cc48e6e
-  "appId": "b5487998-9a7b-4d4c-a9ed-f469d75654c8",
-  "displayName": "azure-cli-2019-01-25-02-08-27",
-  "name": "http://azure-cli-2019-01-25-02-08-27",
-  "password": "312e50f4-3ae1-4778-969a-f944d673fe4b",
-  "tenant": "0f3f266f-60f7-417e-82c3-7cf93cc48e6e"
-  
+    
   28-Dec ==> 228-635-411
   
-  dropmesuri@gmail.com ==>  
+    
 
 How to Login into VM => Open Run Prompt => mstsc-v ipaddress
    
@@ -29,11 +19,8 @@ Set-ExecutionPolicy unrestricted  ==>A
 
 Azure info..
     Microsoft Account --->
-  suri.polavarapu@gmail.com  -->Suri$7874
+ 
   
-  VM login deatils
-  
-  suri-->>motherindia@1234  
 
 NSG ==>Network Security Group   
   
@@ -146,13 +133,9 @@ if ((i % 2) == 0)
 	
 	
 	json 
-     [
-	 
-	 
-	 
-	 
-	 
-	 ]
+     {
+	 `````````````
+	 }
 
 			
 			
@@ -600,28 +583,7 @@ JSON FORMAT ==>
 ###############################################27-JAN-2019############################################################################
 
   
-         
-print "Hi"
-print "hlo"
-
-
-["hi","hlo","welcome"]
-
-  
-
-  copyfunction 
-
-   name 
-   size
-   batch: 1
-   mode: "serial"/"parallel"   
-   
-   
-   
-   
-    nestedTemplate
-	linkedTemplate 
-		 
+           
 	 
 	 
 		         

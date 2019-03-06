@@ -1,0 +1,1259 @@
+
+How to connect SERVER for single user ==> ssh username@public ip  (go to .pem open gitbash)
+
+   jAVA INSTALLATION  ==>
+	   wget https://download.oracle.com/otn-pub/java/jdk/8u192-b12/750e1c8617c5452694857ad95c3ee230/jdk-8u192-linux-x64.tar.gz
+
+    MAVEN INSTALLATION ==>
+          wget https://www-us.apache.org/dist/maven/maven-3/3.6.0/binaries/apache-maven-3.6.0-bin.tar.gz
+
+
+
+  
+  Devops::
+-------------
+
+
+attribute
+
+ recipe
+ 
+  package 'git' do
+    action :install
+  end 
+
+
+yum install git
+yum install tree 
+
+
+package node ['package']['name'] do 
+  action :install
+end
+  
+attributes
+
+default ['package']['name'] = 'git'
+
+
+
+
+kitchen 
+
+ creates test environment
+ execute recipe
+
+ .kitchen.yml
+  => Vagrant
+      => Virtual Box
+	  => HyperV
+  => AWS
+      => 
+     kitchen list
+	  ---what are th ekitchen list are avaible it will show
+	  
+     kitchen converge
+	 
+	 
+	 
+	 kitchen login 
+	  -- login into kitchen
+	 
+	 
+	 kitchen destroy 
+	 
+	 --destroys the VM you created and tested in kitchen 
+	 
+	 
+	 
+	 chef Zero= > Simulated version of chef server
+	 
+	 
+	 
+	 
+
+ Cookbook Developemnt
+ ==>test => things are working
+ 
+ 1.uload the changes to server & test on nodes
+ 2. kithen 
+    =>.kitchen.yml
+	  
+	  
+	   driver:
+	     => vagrant
+		 
+		 
+		 kitchen list
+		 
+		 kitchen converge -l debug 
+		 
+	     
+	 Tomcat
+	 
+	 
+	 war into tomcat 
+	 
+	 TEST KITCHEN AWS (EC2 SETUP)
+	 
+	  1. Secret key and access key 
+	       aws configure cmd
+		   
+		   
+		   kitchen list --> It shows  available kitchens
+		   
+		   kitchen converge -l debug
+		   
+		   kitchen login
+		   
+		   
+		   
+	chef generate recipe . tomcat7
+
+ chef generate attibute . 
+
+
+
+
+
+  
+
+  Creating a file in Cookbook ==> chef generate file . file_name  
+	 
+	 
+	 
+	 
+	 kitchen list --> to show kitchen lists
+	 
+	 kitchen converge -l debug --> To show the errors 
+	 
+	 
+Log Syntax::
+-----------------	 
+	 log 'logname' do
+         level :info
+		action :message
+	end
+	 
+	 
+	 
+	 
+	 Hello <FrdName>,
+	 
+	 Merry Xmas
+	 
+	 Regards,
+	 Suri..
+	 
+	 
+	 
+	 CHEF ROLES & ENVIRONMENT::
+---------------------------------------
+    1. Managing Multiple Nodes,Runlists seperately
+	  => role => way to manage Runlist
+	   run_list => recipes
+	   run_list => role
+	   
+	   role => recipes, syslog
+	   
+	   webserverrole => utils, apache, syslog 
+	   
+	   
+	   100 => role(webserverrole)
+	   
+	  
+	  
+	  
+    2. How can i handle version specifix nodes
+	   => Environment ==> Way to put restrictions on cookbook versions 
+
+			=> 	QA 
+			     => Apache == 1.0.0 
+				 => Tomcat == 1.0.0
+			=> DEV 
+			     => Apache == 1.0.0
+				 => Tomcat == 1.0.0 
+				 
+			=> PROD 
+			     => Apache == 1.0.0
+				 => Tomcat == 1.0.0
+			
+			
+    ChefAttributes we can refer   ==> https://docs.chef.io/attributes.html
+
+    1. recipe
+	2. attribute files
+	3. Environment
+	4.role
+	   attribute_tupe => default
+	   
+	   default,
+	   force_default,
+	   normal,
+	   override,
+	   force_override.
+	   
+	   
+	   sudo chef-client 
+	      => node object will be reset 
+	           normal 
+           
+    knife Node Commands ==> 
+	
+	
+	knife node bulk delete REGEX (options)
+	knife node create NODE (options)
+	knife node delete [NODE [NODE]] (options)
+	knife node edit NODE (options)
+	knife node environment set NODE ENVIRONMENT
+	knife node from file FILE (options)
+	knife node list (options)
+	knife node policy set NODE POLICY_GROUP POLICY_NAME (options)
+	knife node run_list add [NODE] [ENTRY [ENTRY]] (options)
+	knife node run_list remove [NODE] [ENTRY [ENTRY]] (options)
+	knife node run_list set NODE ENTRIES (options)
+	knife node show NODE (options)
+	knife node status [<node> <node> ...] 		   
+    
+		 
+	     
+
+
+	 
+	 knife node delete $nodename ==> for delete Node
+	 
+	 knife cookbook list ==> To Show the cook books 
+	 
+	 
+	 chef generate cookbook webserver
+	 
+	 chef generate cookbook dbserver
+	 
+	 goto WebSrv--> install git 
+	 
+	 evironment from file $Filename ==>  
+	 
+	 
+	SUPERMARKET ==>
+------------------------------
+      ===> cookbooks 
+	 
+  	 SuperMarket is whole colletion of cookbooks 
+   
+             which you can user rather tha developying on your own 
+			 
+			 ==> runlist 
+			 ==> custom resources 
+			 
+	A => B => C => D	 
+			 
+			 
+	 
+==> https://supermarket.chef.io/cookbooks/
+	 
+	 copy & Paste in yor cookbook(default.rb)  ==> depends  'java', '~> 3.1.1'  ==> berks install 
+	 
+	                             ==> depends 'tomcat', '~> 3.2.0'  => berks install 
+								                                      change version 
+																	   ==> berks upload 
+	 
+	 
+	 1. Understand How to Use it 
+	        => custom resources 
+			=> include recipe in runlist
+			      attributes defined.
+
+
+
+
+
+
+
+
+        BEFORE GOING TO INTERVIEW ON CHEF PLZ DO IT AT LEAST ONCE ::
+	-------------------------------------------------------------------------	
+					TWO EC2 MACHINES  -
+	           1. MYSQL  (Use supermarlet cookbook )
+			   2. TOMCAT8 
+			   
+			   Java based App 
+			    Upload openmrs.war to your s3 bucket 
+				
+				from chef 
+				2 cookbooks 
+				
+				1. App Server
+				   => tomcat8 (java 8) 
+				        copy war file to webapps
+						
+				2. Db Server 
+                     => my sql 5.7 
+                       username 
+                       password 					   
+						
+			  
+			   goolge it openmrdd==> 
+			
+				  
+	 
+	 
+	unattended bootstrapping ==> installing chef agaent without external commands 
+1. linux
+2. Windows 	
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+extensions :
+    chef extensions 	 
+	 
+	 
+	 CHEF SERVER INSTALLING IN YOUR OWN EC2 MACHINE ::
+	 -------------------------------------------------------
+	 
+          1. Download package from chef Server 
+          2. 8 bg or RAM 
+              => sudo -i
+			  => sudo rpm -Uvh /tmp/chef-server-core-<version>.rpm
+			  => sudo chef-server-ctl reconfigure
+			  => sudo chef-server-ctl user-create USER_NAME FIRST_NAME LAST_NAME EMAIL 'PASSWORD' --filename FILE_NAME
+			  => sudo chef-server-ctl user-create janedoe Jane Doe janed@example.com 'abc123' --filename /path/to/janedoe.pem
+			  => sudo chef-server-ctl org-create short_name 'full_organization_name' --association_user user_name --filename ORGANIZATION-validator.pem
+
+
+			  
+
+	
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 CONFIGURE AWS CLI ==> Install AWS CLI FROM google and install It.
+	                         ==> goto 	EC2 select IAM ==> Create user --> enter userName,Programmatic access,Give Administrator permission and create user..
+							 
+							 Goto Powershell ==> aws configure==> it will prompt enter 
+                                                                   Enter Access Key Id,
+																	Enter  Seret Access ke 
+																	default region Name,
+																	default input format--json.
+																	
+																	
+		****************************************************11-DEC-2018****************************************************															
+		
+		  ==> DataBags
+		  ==> Resource resources(1wrp)
+		  ==> unattended bootstrap (VM/Cloud)
+		  
+		  
+		  
+		  Use databags we can encrypt the passwords,
+		  
+		  Secret string,Secret file.
+		  Data@ server level 
+		  
+		  
+		  knife data bag --help 
+		  
+		  knife data bag create admins
+		  
+		  
+		  password = data_bag_item('admin','admin_deatils',	secretkey) 
+		  
+		  
+	use secret file 
+
+
+   ==>  ensure secret file is available in all nodes.
+  
+    
+	   password = data_bag_item('admin','admin_deatils',IO.read())
+  
+  
+  property :fun, String, default : 'Hello'
+  
+  action :install do 
+  
+  package 'apache2' do 
+      action :install 
+  end
+  
+  service 'apache2' do 
+         action [:enable,:start]
+  end	
+  
+ end 
+  
+  action :uninstall do 
+  
+  package 'aapche2' do 
+     action :uninstall 
+ end 	 
+    
+	
+	
+	
+--how can you change converge type
+--how can i run converge at at same time basically on multiple clients 	=> chef clients 
+--how can i change  log locations in chef
+--log locations 
+
+
+
+ WINDOWS BOOTSTRAP ==> 
+ 
+ Any Where 
+    Workstation to Node 
+	     1. Same domain 
+		 2. Same Network 
+		      ssh 
+			    winrm(SOAP+ Authentications)
+				
+				
+ UNATTENDED BOOTSTRAP ==>  
+
+    1. 
+
+
+
+
+$$$$$$$$$$$$$$$$$$$$$$GIT$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+    
+
+   Version Control System / SCM(Source Code Management)
+	
+ Folder	 => Every Change Made
+ 
+   Can be accessed by multiple people (Parallel writing)
+   
+    
+	
+	Client Server (Subversions, Clearcase,.....)
+	
+	    
+	
+	
+	
+	
+	
+	
+	
+	GIT ==> Distributed 
+	
+	
+	Any installations on windows 
+	
+	  ==> Choco 
+	
+	
+	git init ==> 
+	
+	
+  Working Tree ==> Storage Area ==> Local Repository 
+  
+  
+       == > Open GitBash in this Location 
+	  git init 
+      git config --global user.name  "Suri"
+	  git config --global user.email "suri.polavarapu@gmail.com"
+	  git config -l 
+	  
+	  git add filename.extensions => add files in git
+	  git commit ==> For committing the new changes 
+	  git status ==> To show status of the git
+	  
+	  git commit -m "Ur Message/comment" 
+	  
+	  
+	   git reset --hard                          ==> Removes changes from working Tree 
+   Remove all untracked files from git           ==> git clean -fd .(<dirpath>)	   
+   Removes change made to a file in working area ==> git checkout --<filepath> 
+   
+   ==> git cat-file -p <commitid>
+     
+      git branch ==> To display your are in which Branch 
+      git log --oneline --graph  
+      git branch <BrnachName> 
+	  git checkout branch ==> Goto your required Branch 
+	  
+	  git checkout -b branchName ==> Created NewBranch add move to that branch 
+      git merge <customerA>
+	  git rebase <master>
+      git cherry-pick <commitid>
+	  git cherry-pick A^..B (commited id's)
+	  git merge --abort 
+      git rebase --abort
+	  git cherry-pick --abort 
+         
+   
+   
+   
+   
+   
+        git remote add <git remote add origin https://github.com/Suri33/hello-git.git>(gitHugid)
+		
+		git push origin master ==> Push to remote Location 
+		git branch -r          ==> Remote branches we can shows 
+		git clone <copy github clone url> ==> to clone Remote into your local system
+		git pull --rebase ==> 
+		git pull ==> 
+		
+		
+		git remote add origin " http://qt.com/hyd.git"
+		
+		git remote add Bnglr   "http://qt.com/bng.git" 
+		git push bang customer 
+		 
+		
+		git remote add myfriend " http://suri/suri.qt"
+		git push suri customer 
+		
+		
+		
+		GIT => Where the code this? 
+		
+		
+		Build the code 
+		execute the unit tests 
+		packaged the code unto some format 
+		
+		
+		c       => MAKE 
+		JAVA    => ANTS, MAVEN, GRADLE
+		C#      => MSBUILD 
+		node    => GULP (npm)
+		Python  => Pypi, PIP 
+		
+		
+		
+		JAVA   => MAVEN
+		DOTNET => MSBUILD
+		
+		MAVEN on linux box 
+		git 
+		
+		pulling on java 
+		
+		
+		launch ubuntu 16.04 
+		   => install java 1.8,git,maven 
+		
+		  
+
+root folder ==> mvn compile 
+             => mvn test 
+			 => mvn package 
+		   
+		   
+		   
+		   
+		   
+		executing java maven sample project 
+    ----------------------------------------------------		
+            
+         maven <Goal>    
+             
+        => mvn compile 		 
+		=> mvn test 
+		=> mvn package 
+		=> 
+		=> 
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		pom.xml 
+		
+		=> conventions 
+		       src 
+			      main 
+				     java 
+				  test 
+				     java 
+					 
+					 
+					 
+	    pom.xml 
+		    => dependencies
+            => other pom.xml 
+            => metadata =>  version 
+					    SNAPSHOT 
+
+
+
+ 		=> will i use some existing code 
+					gauva 
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					=> jar/war/ear 
+					
+					
+	 mvn (pom.xml)
+
+            pom.xml => Convention to write java/javabased 
+                    => dependencies 
+					=> strong versioning support 
+					
+					
+					
+	  
+
+   A 
+    pom.xml 
+    A1 
+      pom.xml
+    A2 
+      pom.xml 
+	  
+					
+					
+	
+
+    MVN GOALS ==> 
+    
+	mvn clean   => cleans target folder 			  
+			  
+    mvn compile => convert  java files into .class  files 
+
+    mvn test    => unit test (compiled) 	
+					
+	mvn package => package => jar/war 
+   
+    mvn install => 
+
+    mvn deploy  => 	
+					
+					
+					
+					
+					
+					
+					
+	mvn clean package -Dskip.tests=true 				
+					
+					
+					
+	MARTIN FOWLER 
+        
+        => ThoughtWorks 
+           => microServices 
+
+	Big Bang Integration 
+
+
+    A 
+      B => UI
+      C => Middle 
+      D => SQL 	  
+					
+					
+					
+					
+	Integration from day 1
+       If possible for every change
+
+              compile, test, package 	   
+			  
+			  
+			  
+			  => day builds 
+			        => trigger builds and give feedback for every commit/combination of changes 
+					        => periodic 
+			  => night builds 
+			         => builds 
+					   => Automated testing 
+					   
+					   
+					   
+					   
+					   
+		CI Engine => 
+		
+		
+		
+		 
+
+
+    Spring Pet Clinic 
+
+        1. java
+		2. maven 
+		3. git 
+		4. clone springpet clinic 
+		5. mvn package 
+	        look at test results 
+		
+	stack of s/w to build => Build Environment 
+
+		
+		
+	jenkins ==> jenkins.org => Downloads  => download generic java package 	
+	
+	  
+	  How is jenkins doing these stuff   882 48 675 ==> 27-dec-2018
+
+
+
+	
+	
+	 #################################################DEC -4-2019##########################
+	 
+	 
+	 
+	  JOB A 
+		   
+		    which branch 
+
+         how can i change something 
+		  jar 
+		  
+		 
+		 
+		 
+		 JOB B 
+		
+		
+
+
+
+         JENKINS 
+		 
+		 
+		 Workspace 
+		 
+		   A JOB 
+		       Target 
+			      mystuff
+				      => Common locations (S3 bucket,SAN/NAS,Repositories)
+		
+		   B JOB 
+
+
+
+ 
+    copy artifacts plugin 
+
+
+
+KEY=VALUE 
+
+MESSAGE_USER="HOW ARE YOU"
+BRANCH_TEST_NAME="MASTER"	
+		 
+		 
+   
+      #####################################05-DEC-2019##################################################################
+	  
+	  
+	    
+		
+		   node {
+		         
+		stage('SCM')  {
+                        //gitclone
+						git 'https://github.com/spring-projects/spring-petclinic.git'
+					   }
+
+         stage('build the package')
+                       {
+                        //mvn package
+						sh 'mvn pacakge'
+
+                        }	
+
+                 stage('archival') 
+				        {
+                     //archiving artifacts 
+					 archive 'target/*.jar'
+
+                        }		 
+                 stage('show test results')
+                        {
+						//Showing test results
+						junit 'target/sure-reports/*.xml'
+                        }						
+				  
+				}
+				
+				
+				
+		
+
+
+        Developers work on feature branches 
+		     1. What is the Name which i should give to feature branch 
+			 2.
+			 
+			 
+		How to 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     1. From master create a develop branch => git checkout -b develop 		
+	 2. Requirement/Agile dashboards / backing items 
+	 
+	 
+	 
+	   master => Nightly build (Manual trigger) => Deployment => Staging/UAT/PRe-Prod/Prod 
+	   
+	  release => Nightly build  () => QA 
+	  
+	  develop => Day builds 
+	             
+				 Nightly build (Dev, Component testing)
+				      development => ansible 
+		
+		
+		code review 
+		
+		some tool which tells suggestions for improving code 
+		
+		   => sonar qube 
+		   
+		       cove coverage 
+			   
+			      function add (a,b)
+ 				  {
+				     if(a == 0 && b == 0) => 1
+					    {
+						 return 0; => 2
+						 }
+						 else    => 3
+						 
+						 { 
+						 return a+b; => 4
+						 }
+				}		 
+		
+   unit test 
+
+  add (1,1) = 3/4    
+  add ( 1,2)= 3/4 
+   
+   
+   
+   
+   
+   SONANR QUBE 
+   
+   sudo /etc/apt/sources.list 
+    deb [trusted=yes] http://downloads.sourceforge.net/project/sonar-pkg/deb  binary/ 
+	
+	sudo apt-get update
+	sudo apt-get install java 
+    sudo apt-get install sonar=6.7.4 	
+   
+   
+   
+   cfg system => sonar qube servers   => Name       =>  <sonar-test>
+                                         Server url =>  Private Ip adress
+ 										 token      =>  paste the security token 
+										 
+										 
+    ###########################################08-Jan-2019##################################################################
+
+
+  
+     Virtualization:
+
+ Physical 
+    => OS 
+         Multiple Virtual Machines in one Physical Machine 
+              Hypervisors 
+
+
+
+        Virtual Box 
+		VmWare
+		HyperV
+		
+		Software => Virtual Machines on any Hypervisor is similar 
+           
+        1. Similate Prod environment on Developer machines 
+		2. For practicing DevOps 
+
+
+
+
+     Vagrant 
+	Hypervisor ==> BiosSettings Virtualization => Enabled 
+   HyperV => Microsoft => From Standard Edition 
+   Virtual Box => 
+   VmWare => 
+   
+   
+   
+   
+   
+         Windows 
+	       Chocolatey 
+		   
+		  Mac 
+            HomeBrew	
+
+    
+
+ Git         => choco install git -y 
+ Virtual Box => choco install virtualbox -y 
+ Vagrant     => choco install vagrant -y
+										 
+										 
+     appwiz.cpl ==> Add/Remove Programs 		
+
+
+     NEW => VM =>  		
+										 
+										 
+	box => reusable image 
+
+    file representation of your OS 
+
+
+      => vagrant init centos/7 
+      => vagrant up/down/destroy 
+
+
+ #############################################09-Jan-2019######################################################################
+
+
+  
+
+  Vagrant => Interface to  Hypervisors
+  
+   Commands 
+
+     VagrantFile => 
+	      
+		   configuration for the vm  (ruby syntax) 
+		   
+		    
+			Box => format of vagrant 
+			   VM 
+			    => Provider(VmWare,HpyerV,VirtualBox) 
+				
+				
+				config.vm.box = "centos/6"
+				
+				
+				vagrant init centos/6 ==> 
+				
+				=> vagrant up --provider hyperv
+				
+	<harddisk>	
+        Sharing some content from my laptop to VM 
+
+       my laptop => HOST 
+              VM =>	GUEST 
+
+    <networking>
+      1. port forwarding 
+	  2. Private Networking 
+	  3. Public networking 
+
+    <ram,cpu>
+
+###############################################10-Jan-2019######################################################################
+
+         
+		 
+		         vagrant => Box 
+				 Amazon  => AMI 
+				 Azure   => Images
+
+
+       Creating reusable images on different virtual platforms 
+	   
+	   amazon 		
+	   
+	     VM => EC2 => ami 
+		 
+		 
+	Packer ==>  Using create Reusable images for Virtual Environment  	 
+	      
+		   => Reusable 
+		      => Where 
+			     => Any Virtual Environment 
+
+     scp source destination 
+   
+       user@ipaddress:/home/ubuntu 
+       	 
+	    scp -r -i oregon.pem  packer/ubuntu@ipaddress:/home/ubuntu
+		
+		
+		packer => PATH 
+		
+		PACKER 
+	   
+	
+	
+
+
+
+   
+    <provisioning>    
+########################################################11-JAN-2019############################################################
+             	 
+    PACKER ==> 		
+
+	Varaiables     => Customize the behaviors 
+	
+	Builders       => Mandatory  => Builder is a Area where we can write the Virtual Images 
+	
+	Provisioners   => Configuration/Installation of Your Needs 
+	                     => Shell
+						 => Ansible 
+						 => Chef 
+						 
+	Postprocessors => 	
+										 
+										 
+										 
+										
+   
+            BUILDER => Target location for creating machine image       
+
+
+        function  add (a,b) 
+		         {
+				    return a+b ;
+				 }
+			
+         any image 
+		 
+		   => reference 
+		   
+		      existing image 
+			   
+			    Virtual Box image which consists of apache, tomcat, git 
+				 sudo apt-get update
+				 sudo apt-get install apache2 git -y 
+				
+				Virtual Box 
+				
+				1. Create a VM with  some iso file 
+				2. Login & do the installation manually 
+				3. Create a image 
+				
+				
+				Amazon Cloud 
+				    
+
+    How packer can speak with any AWS Account ?
+	
+	Programmatically or from Console (IAM) 
+	   
+	     Existing image id 
+		 
+		 region => oregon 
+		  image => ami-076e276d85f524150 
+		  
+##############################################21-JAN-2019######################################################################
+
+     
+	 
+	  Validating  the Terraform ==>
+	   
+	  
+	      => terraform init 
+	      => terraform validate -var 'myaccesskey=accesskey' -var 'mysecretkey=seretkey' .
+		  => terraform apply -var    'myaccesskey=accesskey' -var 'mysecretkey=seretkey' .
+		  => terraform destroy -var  'myaccesskey=accesskey' -var 'mysecretkey=seretkey' .
+		  
+		  
+	#################################################24-JAN-2019######################################################################
+
+     
+      TERRAFORM MODULES 
+
+         => Module 
+              Reusable terraform script/template
+       
+              => resources 
+                   attributes => output 
+                   arguments  => input 
+
+
+              => arguments  => input  => variabes 
+			  => attributes => output => 
+			  
+			  
+	Community Modules 
+	
+	
+	     For any thing which is reusable make it a module 
+		 
+	Hands on experience ==> 	 
+		   using modules 
+		   creating modules 
+		   converting terraform scripts to reusable 
+        			  
+           				   
+#################################################25-JAN-2019###############################################################################
+
+  
+      Modules 
+	    => Registry
+		=> local modules 
+		
+ TerraForm with Azure ==>
+
+         
+###############################################26-JAN-2019###################################################################### 
+ 
+
+     		 
+	Variables 
+    Provider 
+    Datasource	
+	Resource 
+	  connection
+	  provision (remote-exec) 
+	  
+	  
+	Module 
+
+    Output
+
+
+        
+  Azure
+    
+   Network 
+   VM 
+   
+
+1. Network
+2. Network Security Group
+3. Storage Account
+4. VM 
+
+  
+  
+   Terraform Backends
+   
+    
+	State Files 
+	
+	  => What has beed created / what is existing now
+    State lock file 
+	 => Is there some one who is running this 
+
+	  
+
+
+        
+      
+	  
+ 
+ 
+     
+
+ 
+    
+		
+             
+	
+	   
+      
+	  
+         
+		  
+		  
+		   
+		 
+		 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+	
+	   
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+ 
+         
+
+

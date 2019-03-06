@@ -1,25 +1,10 @@
-
-Cloud init ==>
-
- #!/bin/sh 
   
   output "Machine_ip" {  
   value = "http://$aws_insatance.name.public_ip):8080"
                       }
-
-
-   AWS Account Info--
-      dropmeram@gmail.com--->Ram4u.123
-      psuri.3345@gmail.com-->Suri.7874
-	  
-	  
- manage.chef.io ==> dropmesuri@gmail.com--->Suri.7874 
- 
   
-  DEVOPS
-  GitHub Login ==> Suri33 --Suri.7874-->github.com  
-  
- Connect to Server==> ssh username@publicIPV4Address 
+	  
+Connect to Server==> ssh username@publicIPV4Address 
   
   
  HOW TO CONNECT TO SERVER:: copy the server  public IPV4 DNS/IPV4 Public Ip and goto .pem loc open BitBash  -->ssh username@ipv4DNS/ipv4 public ip
@@ -757,7 +742,7 @@ aws configure ==>
 		 
 		 
     {
-		 "city": "Hyd" 
+		 "city" : "Hyd" 
 		 
 		 <name>: <value>
 		 "price": 10.24
@@ -814,29 +799,7 @@ aws configure ==>
 	}
 	 
   
-  
-   => CareerObjective
-   => ProfessionalSummary
-   => SkillSets
-   => WorkExperience
-   => Contact 
     
-	
-	Journey
-	typeOfJourney
-	Distance
-	JourneyTime
-	
-	
-	
-  WRITE A TEMPLATE 
-     => Cloud Formation
-		Json
-		Yaml 
-		
-		 
-		 => Infrastructure => Ideampotant  & Reusable ( Same State )
-	
 	
   
   

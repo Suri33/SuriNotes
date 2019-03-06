@@ -1,0 +1,58 @@
+ 
+  => Package for webservice in Ubuntu==>apache2
+  => Package for webservice in RedHat==>httpd
+ 
+ CHEF PROCESS FLOW::
+ ----------------------
+  => Create a Server (ubuntu/RedHat) in EC2 Machine 
+  => Manage.chef.io create Org
+		=> Download the starterkit
+  => Extract the StarterKit ,it will create Chef-repo-> it conatins .chef,cookbooks,roles 
+  => Goto Cookbook loation generate new cookbook 
+		=> chef genearte cookbook samplebook
+  => Goto cookbook location creation recipe
+        => chef genearte recipe Biryani
+  => Goto Cookbook location Install,update --Berks	
+		=> berks install
+		=> berks upload
+  => Add Runlist to ur Node
+		=> Goto Manager.chef.io -->Select Node  and add Cookbook to ur Runlist
+  => Copy ServerName then Goto .Pem file Loc and Open GitBash and Paste in ServerName
+		=> ServerName --->Yes
+		=> Switch to Root User
+		  ==> sudo -i
+		    ==> chef-client
+			
+			
+    NOTE::
+-----------------
+	=> We Do BootStrap only once for Every Node..
+	=> For every CookBook we need to maintain unique Version Number
+	    ==> We can find Version in metadata.rb ,So here we can update the version number for every time
+	=> When  every we write/update the Cookbook/receipe we Need to Install/Upload Berks
+		==> berks install
+		==> berks upload
+	=> 	
+  
+  
+  
+  
+   
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
