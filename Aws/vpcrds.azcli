@@ -1,0 +1,76 @@
+# Creating VPC  
+
+# vpc-0ced79dfbc851d60f 
+# 
+aws ec2 create-vpc --cidr-block "10.10.0.0/16" 
+
+
+# Creating Subnets
+
+# subnet-0a3fb67b06c93cd47
+aws ec2 create-subnet --cidr-block "10.10.0.0/24" --vpc-id vpc-0ced79dfbc851d60f --availability-zone us-west-2a 
+# subnet-02ca20dd9d9cc87f3
+aws ec2 create-subnet --cidr-block "10.10.1.0/24" --vpc-id vpc-0ced79dfbc851d60f --availability-zone us-west-2b --tags Key=Stack,Value=FrolCLI
+#  subnet-05c60cd51bafcde8a
+aws ec2 create-subnet --cidr-block "10.10.2.0/24" --vpc-id vpc-06c925daadc68a7f6 --availability-zone us-west-2c
+
+# Creating Internet gateway 
+
+# igw-0cb564ddc6774bb4c
+aws ec2 create-internet-gateway 
+
+# Attaching InternetGateway to VPC 
+
+aws ec2 attach-internet-gateway --internet-gateway-id igw-0cb564ddc6774bb4c --vpc-id vpc-06c925daadc68a7f6
+
+# creating Route Table 
+
+# rtb-0ae91ea6c097df48f
+aws ec2 create-route-table --vpc-id vpc-06c925daadc68a7f6
+
+# Creating Route 
+aws ec2 create-route  --route-table-id rtb-0ae91ea6c097df48f --gateway-id igw-0cb564ddc6774bb4c --destination-cidr-block 0.0.0.0/0
+
+# Route Table Assocaition with Subnet 
+
+# rtbassoc-0b93c8d516d74442d 
+aws ec2 associate-route-table --route-table-id rtb-0ae91ea6c097df48f --subnet-id subnet-0cdfa15b17cf48129 
+# rtbassoc-0fcbe0460b5dfaf4a
+aws ec2 associate-route-table --route-table-id rtb-0ae91ea6c097df48f --subnet-id subnet-02ca20dd9d9cc87f3 
+# rtbassoc-068d99e821b5b76ae
+aws ec2 associate-route-table --route-table-id rtb-0ae91ea6c097df48f --subnet-id subnet-05c60cd51bafcde8a
+
+
+# Creating db-subnet-group 
+
+aws rds create-db-subnet-group --db-subnet-group-name "SuriDBGroup" --db-subnet-group-description "PlayingWithDB" --subnet-id "subnet-0cdfa15b17cf48129" "subnet-02ca20dd9d9cc87f3"
+
+# Creating Security Group 
+# sg-0ff0a01c8e96a94ef
+aws ec2 create-security-group --description "SGfromCLI" --group-name "SuriSG" --vpc-id "vpc-06c925daadc68a7f6" 
+
+# Creating DB instance 
+
+aws rds create-db-instance  --db-name "MySQL" --allocated-storage 20 --master-username "root" --master-user-password "Passw0rd" --db-instance-identifier "SuriDB" --db-instance-class "db.t2.micro" --engine "" --db-subnet-group-name "SuriDBGroup" --backup-retention-period 0 --vpc-security-group-ids "sg-0ff0a01c8e96a94ef"
+
+
+
+
+
+
+# Create Security Group 
+
+# sg-082bf16df5fec180c
+aws ec2 create-security-group  --group-name fromcliSG --vpc-id vpc-0ced79dfbc851d60f --description FromCLI
+
+
+# Ingress rules 80,22  Security Group
+
+aws ec2 authorize-security-group-ingress --group-id sg-082bf16df5fec180c --port 80 --protocol tcp --cidr 10.10.0.0/16
+
+aws ec2 authorize-security-group-ingress --group-id sg-082bf16df5fec180c --port 22 --protocol tcp --cidr 10.10.0.0/16
+
+
+# Creating EC2 
+
+aws ec2 run-instances --image-id ami-08692d171e3cf02d6 --instance-type t2.micro --key-name oregon --security-group-ids sg-082bf16df5fec180c --subnet-id subnet-0a3fb67b06c93cd47 --count 1 

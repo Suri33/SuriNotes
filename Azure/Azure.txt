@@ -1,6 +1,7 @@
 
     
-  28-Dec ==> 228-635-411
+ 
+  az account show --query "{subscriptionId:id, tenantId:tenantId}"
   
     
 
@@ -13,8 +14,7 @@ How to Login into VM => Open Run Prompt => mstsc-v ipaddress
   => Logs 
 
 
-ERROR POWERSHELL LOGIN ISSUE::
-Set-ExecutionPolicy unrestricted  ==>A 
+ERROR POWERSHELL LOGIN ISSUE ==> Set-ExecutionPolicy unrestricted  ==> A 
 
 
 Azure info..
@@ -25,7 +25,7 @@ Azure info..
 NSG ==>Network Security Group   
   
   
-  write a powershell script which will display All the numbers which are even from 1 to 100
+  write a power shell script which will display All the numbers which are even from 1 to 100
   for (i=0;i<=100;i
   
   ++)

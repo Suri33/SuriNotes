@@ -1,0 +1,33 @@
+         DEFAULT PORTS ==>
+		 
+
+   SERVICE NAME		PORT NUM
+  --------------   -------------
+	HTTP
+	APACHE            80
+	NGINX      
+	
+	TOMCAT            8080 
+	JENKINS           
+	
+	HTTPS             443
+	
+	SSH               22
+	
+	RDP               3389
+	
+	SQL               1433
+	
+	DNS               53
+	
+	MYSQL             3306
+	
+	
+	
+        WE USE DEVOPS FOR ==> 
+              =>  TIME TO MARKET
+              =>  BUSINESS FOR VALUE
+  
+  
+  
+  

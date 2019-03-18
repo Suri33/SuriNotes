@@ -1,0 +1,11 @@
+# getting Name,Location from StorageAcount
+az storage account list -o table --query "[].{Name: name,Location: location}"
+
+# Getting Name from StorageAccount
+az storage account list -o table --query "[].{Name: name}"
+
+
+# To get Public ip address from VM
+az vm list-ip-addresses --query [].virtualMachine.network.publicIpAddresses[].ipAddress -o table
+
+
