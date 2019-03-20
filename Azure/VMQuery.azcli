@@ -1,0 +1,35 @@
+# getting Name,Location,AccessTier from StorageAcount
+az storage account list --query "[].{Name: name,Location: location,tier: accessTier }" -o table
+
+# Getting Name from StorageAccount
+az storage account list --query "[].{Name: name}" -o table
+
+
+# To get Public ip address from VM
+az vm list-ip-addresses --query  "{ pubIp: [0].virtualMachine.network.publicIpAddresses[0].ipAddress }" -o table
+
+# Public Ip,Private Ips
+
+az vm list-ip-addresses --query "{ PrivateIp: [0].virtualMachine.network.privateIpAddresses[0], PublicIp: [0].virtualMachine.network.publicIpAddresses[0].ipAddress }"  -o table
+
+
+# To get Private Ip Addres from VM 
+az vm list-ip-addresses --query [].virtualMachine.network.privateIpAddresses[] -o table
+
+az vm start --ids $(az vm list --query "[].id" -o tsv)
+
+# getting ComputerNames from VM's
+az vm list -d --query  [].osProfile.computerName[] -o table
+
+# Starting VM's in a RG
+az vm start --ids $(az vm list -g <RG> --query "[].id" -o tsv) 
+
+#  Stopping VM's n a RG
+az vm stop --ids $(az vm list -g <RG> --query "[].id" -o tsv) 
+
+# Starting & Stpping All VM"s at a time 
+az vm stop --ids $( az vm list --query "[].id" -o tsv )
+az vm start --ids $( az vm list --query "[].id" -o tsv )
+
+# Deleting All VM"s at a time 
+az vm delete --ids $( az vm list --query "[].id" -o tsv ) 
