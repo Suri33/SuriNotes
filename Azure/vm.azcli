@@ -2,7 +2,7 @@
 az group create --name mygrp --location centralus
 
 # VNET Creation 
-az networssk vnet create -g mygrp -n myvnet --address-prefix 10.10.0.0/16 --subnet-name mysub1 --subnet-prefix 10.10.0.0/24 
+az network vnet create -g mygrp -n myvnet --address-prefix 10.10.0.0/16 --subnet-name mysub1 --subnet-prefix 10.10.0.0/24 
 # Delete 
 az network vnet delete -g mrgrp -n myvnet 
 # List
@@ -50,3 +50,23 @@ az vm delete -g mygrp -n myvm -y --no-wait
 az vm list --output table 
 # List with Details
 az vm list -g mygrp -d --output table
+
+# Win2012R2Datacenter VM Creation 
+
+az vm create -n VM2 -g second --admin-username "suri" --admin-password "Suri.polavarapu" --subnet "secondsn" --subnet-address-prefix "10.10.0.0/24" --vnet-nam
+e "secondvnet" --image "Win2012R2Datacenter" --no-wait -o yaml
+
+# Ubuntu VM Creation 
+
+az vm create -n VM1 -g first --admin-username "suri" --admin-password "Suri.polavarapu" --image "UbuntuLTS"  --subnet firstsn --subnet-address-prefix "10.10.0
+.0/16"  --vnet-name firstvnet --no-wait -o table
+
+# Storage Account Creation 
+
+az storage account create -n storageonsecond -g second -l eastus --sku Standard_LRS  --access-tier Hot --kind BlobStorage -o yaml
+
+# Deleting All Storage Account in Singleshot
+az storage account delete --ids $(az storage account list --query "[].id" -o tsv)
+
+
+

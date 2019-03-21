@@ -10,5 +10,5 @@
   - name: Starting Tomcat7    
     service:
       name: tomcat8
-      state: started 
       enabled: yes
+      state: started 

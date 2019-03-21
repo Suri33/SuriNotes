@@ -5,16 +5,18 @@ az storage account list --query "[].{Name: name,Location: location,tier: accessT
 az storage account list --query "[].{Name: name}" -o table
 
 
-# To get Public ip address from VM
-az vm list-ip-addresses --query  "{ pubIp: [0].virtualMachine.network.publicIpAddresses[0].ipAddress }" -o table
+# To get PublicIp Address of VM
+az vm list-ip-addresses --query [].virtualMachine.network.publicIpAddresses[].ipAddress -o table
 
-# Public Ip,Private Ips
-
-az vm list-ip-addresses --query "{ PrivateIp: [0].virtualMachine.network.privateIpAddresses[0], PublicIp: [0].virtualMachine.network.publicIpAddresses[0].ipAddress }"  -o table
-
-
-# To get Private Ip Addres from VM 
+# To get PrivateIp Addrres of VM 
 az vm list-ip-addresses --query [].virtualMachine.network.privateIpAddresses[] -o table
+ 
+# Public Ip,Private Ips (Not Working)
+
+az vm list-ip-addresses --query "{ PrivateIp: [].virtualMachine.network.privateIpAddresses[], PublicIp: [].virtualMachine.network.publicIpAddresses[].ipAddress }"  -o table
+
+
+
 
 az vm start --ids $(az vm list --query "[].id" -o tsv)
 
