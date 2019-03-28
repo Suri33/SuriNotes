@@ -15,8 +15,11 @@ az vm list-ip-addresses --query [].virtualMachine.network.privateIpAddresses[] -
 
 az vm list-ip-addresses --query "{ PrivateIp: [].virtualMachine.network.privateIpAddresses[], PublicIp: [].virtualMachine.network.publicIpAddresses[].ipAddress }"  -o table
 
+# Working with ForEach-Object 
+ps | ForEach-Object {$_.Id,$_.Name}
 
-
+# Alias Names 
+New-Alias -Name MYVM -Value Get-AzVM
 
 az vm start --ids $(az vm list --query "[].id" -o tsv)
 

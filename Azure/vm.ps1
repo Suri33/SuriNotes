@@ -31,4 +31,4 @@ $cred = New-Object System.Management.Automation.PSCredential ("azureuser", $secu
 # Create a virtual machine configuration
 $vmConfig = New-AzVMConfig   -VMName "myVM"   -VMSize "Standard_D1" | Set-AzVMOperatingSystem   -Linux   -ComputerName "myVM"   -Credential $cred   -DisablePasswordAuthentication | Set-AzVMSourceImage   -PublisherName "Canonical"   -Offer "UbuntuServer"   -Skus "16.04-LTS"   -Version "latest" | Add-AzVMNetworkInterface -Id $nic.Id
 
-  New-AzVM -ResourceGroupName "myResourceGroup"  -Location eastus -VM $vmConfig  
+  New-AzVM -ResourceGroupName "myResourceGroup"  -Location "eastus" -VM $vmConfig  
