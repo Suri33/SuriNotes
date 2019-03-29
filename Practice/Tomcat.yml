@@ -1,0 +1,14 @@
+---
+- hosts: localhost
+  become: yes
+  tasks:
+  - name: installing Tomcat8
+    apt:
+      name: tomcat8
+      update_cache: yes
+      state: present 
+  - name: Starting Tomcat7    
+    service:
+      name: tomcat8
+      enabled: yes
+      state: started 

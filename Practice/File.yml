@@ -1,0 +1,12 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: create file
+      file:
+        path: /home/ansible/1.txt
+        state: touch
+    - name: delete the file
+      file:
+      path: /home/ansible/1.txt
+      state: absent

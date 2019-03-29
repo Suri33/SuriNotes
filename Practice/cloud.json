@@ -1,0 +1,40 @@
+{
+"AWSTemplateFormatVersion": "2010-09-09",
+"Description": "VPC creation by CF on 29-Mar-2019",
+"Resources" : {
+"myVPC" : {
+"Type" : "AWS::EC2::VPC",
+"Properties" : {
+"CidrBlock" : "192.168.0.0/16",
+"Tags" : [ 
+{
+"Key" : "Name",
+"Value" : "SuriVPC"
+} 
+]
+}
+},
+"mySubnet": {
+"Type": "AWS::EC2::Subnet",
+"Properties": {
+
+"VpcId": 
+{ "Ref": "myVPC" }
+,
+"CidrBlock": "192.168.1.0/24",
+"Tags": [{ "Key" : "Name", "Value" : "Mysubnet" }]
+}
+},
+"mySubnet1": {
+"Type": "AWS::EC2::Subnet",
+"Properties": {
+
+"VpcId": 
+{ "Ref": "myVPC" }
+,
+"CidrBlock": "192.168.2.0/24",
+"Tags": [{ "Key" : "Name", "Value" : "Mysubnet1" }]
+}
+}
+}
+}

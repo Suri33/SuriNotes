@@ -1,0 +1,45 @@
+{ "AWSCloudFormationTemplate":  "2010-09-09",
+    "Description":  "Playing With VPC",
+    "Resources": {
+        
+        "vpc": {
+            "Description": "ccrreating VPC",
+            "Type": "AWS::EC2::VPC",
+            "Properties": {
+
+                "CidrBlock" : "10.10.0.0/16"
+                      }
+        },
+        
+        "sub1": {
+            "Description": "Creating SUb1",
+            "Type": "AWS::EC2::Subnet",
+            "Properties": {
+
+                 "Vpc_Id" : {"Ref" : "vpc" },
+                    "CidrBlock" : "10.10.1.0/24"
+                 }
+            }
+        },
+        
+        
+        "Outputs": 
+    {
+
+          "vpcId" :
+          {
+                 "Description" : "Getting VPC ID",
+                 "Value" : { "Ref" : "vpc"}
+          },
+           
+          "Sub1" :
+           {
+                 "Description" : "Getting SubnetId",
+                 "Value" :  {"Ref" : "sub1"
+                 }
+
+           }
+    }
+
+
+}

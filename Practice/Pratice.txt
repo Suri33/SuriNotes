@@ -1,0 +1,124 @@
+Ansible 
+Powershell
+Azure ARM 
+AWS CF 
+Terraform 
+Docker 
+K8S 
+
+
+QUESTIONS ==>
+ 
+ Terraform  =>
+ 
+ Terraform is a Infra provisioning Tools 
+  By using this tools we can create complete environments on both clouds like AWS & Azure
+
+It has  following modules
+   => Providers
+   => variables 
+   => Resources 
+   => Connection
+   => Output
+      
+	  terraform init .
+	  teraform validate .
+	  terraform plan .
+	  terraform apply .
+   
+
+
+
+GitToken => Settings => Developer Settings  => Personal Access Tokens => Generate New Token 
+
+    Jenkins Security ==> 
+	        
+			
+			
+			
+			
+			Create users in Jenkins.
+		jenkins => Manage Jenkins => Manage Users => Create User  
+	       Jenkins => Configure Global Security => Matrix based Security  
+   Jenkins Log Location ==> /var/log/jenkins/ ==> jenkins.log file is for jenkins log.
+  How to change Jenkins port Number =>
+    Goto => sudo nano /etc/default/jenkins
+JENKINS PLUGINS 
+
+  DeployToContainer  => Deploy .war to particular Location 
+  S3 Publisher  => 
+  Artifactory =>
+  SonarQube Scanner  =>
+  
+  Roles in Azure   ==>
+  
+     1. Web Role
+	 2. Worker Role
+	 3. VM Role
+	 
+	 
+	  Load Balancers in AWS 
+	     => Classic LB
+		 => Application LB  (Layer 7)
+		 => Network LB (layer 4 )
+		 
+		 
+		Application Load Balancer (7)
+		    => http://qt.in/devops
+			=> http://qt.in/aws
+			
+	    Network Layer 4 Protocol port
+               => http://qt.in:8080
+               => http://qt.in:8084	
+
+
+        ROUTING  => Path Based 
+                 => Host Based 	
+
+        Sticky Sessions => 	
+ 
+
+     C's name Record => DNS Names
+     A's Name Record =>	Ip Address
+
+
+   MAVEN LIFE CYCLE ==>
+   ---------------------------
+validate => validate the project is correct and all necessary information is available
+compile  => compile the source code of the project 
+test     => test the compiled source code using a suitable unit testing framework. These tests should not require the code be packaged or deployed
+package  => take the compiled code and package it in its distributable format, such as a JAR.
+verify   => run any checks on results of integration tests to ensure quality criteria are met
+install  => install the package into the local repository, for use as a dependency in other projects locally
+deploy   => done in the build environment, copies the final package to the remote repository for sharing with other developers and projects   
+    			
+				
+				
+				
+				Resume Preparation ==>
+			------------------------------------	
+				
+				Resume Head Line 
+				  => 2+ Years of IT experience as Cloud Engineer(MS-Azure & Amazon Web Services) along with DevOps(Jenkins,Ansible,Docker,Terraform,Maven,Git)
+		        
+				IT Skills =>
+                   => MS-Azure 
+				   => AWS 
+				   => Jenkins
+				   => Ansible
+				   => Terraform
+				   => Docker 
+				   => Maven 
+				   => Git
+				   
+				   
+				Profile Summary =>
+                   => 2+ Years of IT experience as Cloud Engineer(MS-Azure & Amazon Web Services) along with DevOps(Jenkins,Ansible,Docker,Terraform,Maven,Git)
+             				   
+			    
+                				
+				  
+				  
+				
+				
+				

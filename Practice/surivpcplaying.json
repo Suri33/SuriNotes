@@ -1,0 +1,50 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "Creating VPC & Subnets",
+    "Resources": {
+        "vpcName": {
+            "Type": "AWS::EC2::VPC",
+            "Properties": {
+                "CidrBlock": "33.33.0.0/16"
+            }
+        },
+        "subNetOne": {
+            "Type": "AWS::EC2::Subnet",
+            "Properties": {
+                "VpcId": {
+                    "Ref": "vpcName"
+                },
+                "CidrBlock": "33.33.0.0/24"
+            },
+            "subNetTwo": {
+                "Type": "AWS::EC2::Subnet",
+                "Proeprties": {
+                    "VpcId": {
+                        "Ref": "vpcName"
+                             },
+                    "CidrBlock": "33.33.1.0/24" 
+                }
+            }
+        },
+        "Outputs": {
+            "myVpc": {
+                "Description": "Getting vpc id",
+                "Value": {
+                    "Ref": "vpcName"
+                }
+            },
+            "firSubnet": {
+                "Description": "Getting onesubnet id",
+                "Value": {
+                    "Ref": "subNetOne"
+                }
+            },
+            "secondSubnet": {
+                "description": "Getting second subnet id ",
+                "Value": {
+                    "Ref": "subNetTwo"
+                }
+            }
+        }
+    }
+}

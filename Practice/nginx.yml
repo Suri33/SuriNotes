@@ -1,0 +1,14 @@
+---
+- hosts: ubuntu
+  become: yes
+  tasks:
+  - name: Installing Nginx
+    apt:
+      name: nginx
+      update_cache: yes
+      state: present
+  - name: Service Enabled & started
+    service:
+      name: nginx
+      enabled: yes
+      state: started
