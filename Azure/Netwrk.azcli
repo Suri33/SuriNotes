@@ -1,0 +1,8 @@
+# Creating resource Group
+az group create -n "mygrp" -l "centralus"
+az group list -o table
+
+# Crating Vnet with one Subnet 
+az network vnet create -n "myvnet" -g "mygrp" -l "centralus" -AddressPrefix "10.10.0.0/16"  --subnet-name "sub1" --subnet-Prefix "10.10.0.0/24" 
+az network vnet list 
+

@@ -2,7 +2,7 @@
 $ rg = New-AzureRmResourceGroup -Name 'surips' -Location 'Central US'
 
 # Get Resource Group 
-Get-AzureRmResourceGroup -Name  'surips'
+Get-AzureRmResourceGroup -Name  'surips' 
 
 # using Sort,Format-table
 Get-AzureRmResourceGroup | Sort Location,ResourceGroupName |Format-Table 

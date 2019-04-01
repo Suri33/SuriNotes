@@ -1,0 +1,306 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "Creating VPC,Subnets & EC2",
+    
+    "Resources": {
+        "myvpc": {
+            "Type": "AWS::EC2::VPC",
+            "Properties": {
+                "CidrBlock": "10.10.0.0/16",
+                "Tags": [
+                    { 
+                        "Key": "Name",
+                        "Value": "playingVPC"
+                    }
+                ]
+            }
+        },
+        "webSubNet": {
+            "Type": "AWS::EC2::Subnet",
+            "Properties": {
+                "AvailabilityZone": {
+                    "Ref": "availabilyZone"
+                },
+                "VpcId": {
+                    "Ref": "myvpc"
+                },
+                "CidrBlock": "10.10.0.0/24",
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": "WEB"
+                    }
+                ]
+            }
+        },
+        "dataSubNet": {
+            "Type": "AWS::EC2::Subnet",
+            "Properties": {
+                "AvailabilityZone": {
+                    "Ref": "availabilyZone"
+                },
+                "VpcId": {
+                    "Ref": "myvpc"
+                },
+                "CidrBlock": "10.10.1.0/24",
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": "DATA"
+                    }
+                ]
+            }
+        },
+        "appSubNet": {
+            "Type": "AWS::EC2::Subnet",
+            "Properties": {
+                "AvailabilityZone": {
+                    "Ref": "availabilyZone"
+                },
+                "VpcId": {
+                    "Ref": "myvpc"
+                },
+                "CidrBlock": "10.10.2.0/24",
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": "APP"
+                    }
+                ]
+            }
+        },
+        "mgtSubNet": {
+            "Type": "AWS::EC2::Subnet",
+            "Properties": {
+                "AvailabilityZone": {
+                    "Ref": "availabilyZone"
+                },
+                "VpcId": {
+                    "Ref": "myvpc"
+                },
+                "CidrBlock": "10.10.3.0/24",
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": "MGT"
+                    }
+                ]
+            }
+        },
+        "myIGW": {
+            "Type": "AWS::EC2::InternetGateway",
+            "Properties": {
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": "TestIGW"
+                    }
+                ]
+            }
+        },
+        "AttachGateway": {
+            "Type": "AWS::EC2::VPCGatewayAttachment",
+            "Properties": {
+                "VpcId": {
+                    "Ref": "myvpc"
+                },
+                "InternetGatewayId": {
+                    "Ref": "myIGW"
+                }
+            }
+        },
+        "myRT": {
+            "Type": "AWS::EC2::RouteTable",
+            "Properties": {
+                "VpcId": {
+                    "Ref": "myvpc"
+                },
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": "RT"
+                    }
+                ]
+            }
+        },
+        "myRT1": {
+            "Type": "AWS::EC2::RouteTable",
+            "Properties": {
+                "VpcId": {
+                    "Ref": "myvpc"
+                },
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": "RT1"
+                    }
+                ]
+            }
+        },
+        "publicRT": {
+            "Type": "AWS::EC2::SubnetRouteTableAssociation",
+            "Properties": {
+                "SubnetId": {
+                    "Ref": "webSubNet"
+                },
+                "RouteTableId": {
+                    "Ref": "myRT"
+                }
+            }
+        },
+        "publicRT1": {
+            "Type": "AWS::EC2::SubnetRouteTableAssociation",
+            "Properties": {
+                "SubnetId": {
+                    "Ref": "mgtSubNet"
+                },
+                "RouteTableId": {
+                    "Ref": "myRT"
+                }
+            }
+        },
+        "privateRT": {
+            "Type": "AWS::EC2::SubnetRouteTableAssociation",
+            "Properties": {
+                "SubnetId": {
+                    "Ref": "appSubNet"
+                },
+                "RouteTableId": {
+                    "Ref": "myRT1"
+                }
+            }
+        },
+        "privateRT1": {
+            "Type": "AWS::EC2::SubnetRouteTableAssociation",
+            "Properties": {
+                "SubnetId": {
+                    "Ref": "dataSubNet"
+                },
+                "RouteTableId": {
+                    "Ref": "myRT1"
+                }
+            }
+        },
+        "myRoute": {
+            "Type": "AWS::EC2::Route",
+            "Properties": {
+                "RouteTableId": {
+                    "Ref": "publicRT"
+                },
+                "DestinationCidrBlock": "0.0.0.0/0",
+                "GatewayId": {
+                    "Ref": "myIGW"
+                }
+            }
+        },
+        "InstanceSecurityGroup": {
+            "Type": "AWS::EC2::SecurityGroup",
+            "Properties": {
+                "GroupDescription": "Allow http to client host",
+                "VpcId": {
+                    "Ref": "myvpc"
+                },
+                "SecurityGroupIngress": [
+                    {
+                        "IpProtocol": "tcp",
+                        "FromPort": 22,
+                        "ToPort": 22,
+                        "CidrIp": "0.0.0.0/0"
+                    }
+                ],
+                "SecurityGroupEgress": [
+                    {
+                        "IpProtocol": "tcp",
+                        "FromPort": 22,
+                        "ToPort": 22,
+                        "CidrIp": "0.0.0.0/0"
+                    }
+                ]
+            }
+        },
+        "MyEC2Instance": {
+            "Type": "AWS::EC2::Instance",
+            "Properties": {
+                "AvailabilityZone": {
+                    "Ref": "availabilyZone"
+                },
+                "ImageId": "ami-076e276d85f524150",
+                "InstanceType": "t2.micro",
+                "KeyName": {
+                    "Ref": "keyName"
+                },
+                "NetworkInterfaces": [
+                    {
+                        "AssociatePublicIpAddress": true,
+                        "DeleteOnTermination": true,
+                        "DeviceIndex": "0",
+                        "SubnetId": {
+                            "Ref": "webSubNet"
+                        },
+                        "GroupSet": [
+                            {
+                                "Ref": "InstanceSecurityGroup"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "Outputs": {
+        "VPC": {
+            "Description": "Getting VPC ID",
+            "Value": {
+                "Ref": "myvpc"
+            }
+        },
+        "Websubnet": {
+            "Description": "Getting WebSubeNetID",
+            "Value": {
+                "Ref": "webSubNet"
+            }
+        },
+        "DataSubnet": {
+            "Description": "Getting DataSubNetID",
+            "Value": {
+                "Ref": "dataSubNet"
+            }
+        },
+        "MgtSubnet": {
+            "Description": "Getting MgtSubNetID",
+            "Value": {
+                "Ref": "mgtSubNet"
+            }
+        },
+        "AppSubNet": {
+            "Description": "Getting AppSubeNetID",
+            "Value": {
+                "Ref": "appSubNet"
+            }
+        },
+        "IGW": {
+            "Description": "Getting IGW ID",
+            "Value": {
+                "Ref": "myIGW"
+            }
+        },
+        "RT": {
+            "Description": "Getting RT ID",
+            "Value": {
+                "Ref": "myRT"
+            }
+        },
+        "RT1": {
+            "Description": "getting RT1 ID",
+            "Value": {
+                "Ref": "myRT1"
+            }
+        },
+        "MyEC2Instance": {
+            "Description": "Getting Ec2 ID",
+            "Value": {
+                "Ref": "MyEC2Instance"
+            }
+        }
+    }
+}

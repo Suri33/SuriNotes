@@ -1,0 +1,28 @@
+# Creating VPC  id = vpc-0eea2317e896fd1c4
+aws ec2 create-vpc --cidr-block 10.10.0.0/16
+
+# Creating Subnet  id = subnet-0b3fb94a05074ca39
+aws ec2 create-subnet  --cidr-block 10.10.1.0/24 --vpc-id  vpc-0eea2317e896fd1c4
+
+# Creating IGW id = igw-0a752f9d3d784d23d
+aws ec2 create-internet-gateway
+
+# Attach IGW to VPC 
+aws ec2 attach-internet-gateway --internet-gateway-id igw-0a752f9d3d784d23d --vpc-id vpc-0eea2317e896fd1c4
+
+# Creating route table  id = rtb-090be4c904d4432cc
+aws ec2 create-route-table --vpc-id vpc-0eea2317e896fd1c4
+
+# Associate  sunet to route table  id = rtbassoc-0f50b275126dd4e50
+aws ec2 associate-route-table --route-table-id rtb-090be4c904d4432cc --subnet-id subnet-0b3fb94a05074ca39
+
+
+# Security group  id = sg-03e723c52172762aa
+aws ec2 create-security-group --group-name surisg --description "Surisecuritygroup" --vpc-id vpc-0eea2317e896fd1c4
+
+# create ec2 machine  one public  id = i-01387c5bad63e68d4
+aws ec2 run-instances --image-id ami-08692d171e3cf02d6 --count 1 --instance-type t2.micro --key-name oregon --security-group-ids sg-03e723c52172762aa --subnet-id subnet-0b3fb94a05074ca39 --associate-public-ip 
+
+
+# Creating image from ec2  id = ami-0b93f793fcb5fba5d
+aws ec2 create-image --instance-id i-01387c5bad63e68d4 --name "My server" --description "Suri Creating Image from EC2"
