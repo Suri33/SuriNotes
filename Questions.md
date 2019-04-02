@@ -7,7 +7,7 @@ Terraform
 Docker 
 K8S 
 ```
-# Dafault Ports
+# Default Ports
  ```
    Apache2/Nginx ==> WebSrv   ==> 80
 	 Tomcat        ==> AppSrv   ==> 8080 /etc/default/jenkins_config here we can change default Port nums.
@@ -241,7 +241,7 @@ JENKINS PIPELINE ==>
            
 		   }					 
 	   }
-		 
+		  
 }		
 				  
 ```				  
