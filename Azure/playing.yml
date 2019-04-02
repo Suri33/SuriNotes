@@ -1,0 +1,12 @@
+---
+- hosts: all
+  vars: 
+    myvar: hlo
+  tasks:
+  - name: Playing with Debug
+    debug:
+      msg: "{{ myvar }}"   
+      
+      
+      
+    
