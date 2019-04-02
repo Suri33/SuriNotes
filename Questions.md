@@ -92,23 +92,7 @@ Grep ==> GREP is for searching a pattern inside a file.
 ```
    
  
- 
- 
- 
- 
- 
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
+``` 
     Terraform  =>
  
  Terraform is a Infra provisioning Tools 
@@ -134,8 +118,9 @@ It has  following modules
  => SG are tied to an instance 									=> NACL are tied to the Subnet
  => First layer or defense                                      => Second layer of defense  		 
  => Firewall of the EC2                                         => Firewall of the Subnet 
+```
 
-
+```
 GitToken => Settings => Developer Settings  => Personal Access Tokens => Generate New Token 
 
     Jenkins Security ==> 
@@ -152,14 +137,17 @@ JENKINS PLUGINS
   S3 Publisher  => 
   Artifactory =>
   SonarQube Scanner  =>
-  
+``` 
+
+```
   Roles in Azure   ==>
   
      1. Web Role
 	 2. Worker Role
 	 3. VM Role
+```	 
 	 
-	 
+```
 	  Load Balancers in AWS 
 	     => Classic LB
 		 => Application LB  (Layer 7)
@@ -183,8 +171,9 @@ JENKINS PLUGINS
 
      C's name Record => DNS Names
      A's Name Record =>	Ip Address
+```
 
-
+```
    MAVEN LIFE CYCLE ==>
    ---------------------------
 validate => validate the project is correct and all necessary information is available
@@ -194,7 +183,7 @@ package  => take the compiled code and package it in its distributable format, s
 verify   => run any checks on results of integration tests to ensure quality criteria are met
 install  => install the package into the local repository, for use as a dependency in other projects locally
 deploy   => done in the build environment, copies the final package to the remote repository for sharing with other developers and projects   
-    			
+```    			
 				
 				
 				
@@ -219,10 +208,9 @@ deploy   => done in the build environment, copies the final package to the remot
                    => 2+ Years of IT experience as Cloud Engineer(MS-Azure & Amazon Web Services) along with DevOps(Jenkins,Ansible,Docker,Terraform,Maven,Git)
              				   
 			    
-        JENKINS PIPELINE ==> 
+```
+JENKINS PIPELINE ==> 
 
-
-       
 
   node 
     {
@@ -256,7 +244,7 @@ deploy   => done in the build environment, copies the final package to the remot
 		 
 }		
 				  
-				  
+```				  
 				
 				
 				
