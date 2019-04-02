@@ -19,7 +19,7 @@
   - name: deployee the jenkins war in webapps
     get_url:
       url: https://s3-us-west-2.amazonaws.com/surinlrbucket/ROOT.war
-      dest: /var/lib/tomcat7/webapps/jenkins.war
+      dest: /var/lib/tomcat7/webapps/ROOT.war
   - name: start the service 
     service: 
       name: tomcat7
