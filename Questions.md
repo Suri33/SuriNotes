@@ -7,19 +7,19 @@ Terraform
 Docker 
 K8S 
 ```
-
-     Apache2/Nginx ==> WebSrv   ==> 80
+# Dafault Ports
+ ```
+   Apache2/Nginx ==> WebSrv   ==> 80
 	 Tomcat        ==> AppSrv   ==> 8080 /etc/default/jenkins_config here we can change default Port nums.
 	 Jenkins                    ==> 8080
 	 ssh => 22
 	 rdp => 3389
 	 dns => 53
-	 
-	 
-
-QUESTIONS ==>
+ ```  
+	
+  GIT ==>
  
-
+```
 Find ==> FIND is for searching files and directories at system level.
 
 Grep ==> GREP is for searching a pattern inside a file. 
@@ -39,7 +39,8 @@ Grep ==> GREP is for searching a pattern inside a file.
    Delete Files how we will get back in Git  ==> git checkout 
     
    How to delete multiple branches in git ==> git branch -d <branchName>	
-   
+```
+
 ```   
   DOCKER ==>
  FROM ubuntu:18.04
@@ -69,8 +70,8 @@ Grep ==> GREP is for searching a pattern inside a file.
  ```
  
  
- ```
-    ARM TEMPLATE CORE STRUCTURE 
+```
+  ARM TEMPLATE CORE STRUCTURE 
 	
 	{
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -88,7 +89,7 @@ Grep ==> GREP is for searching a pattern inside a file.
 	POWERSHELL ==>
     New-AzResourceGroup –Name "armfromps"
     New-AzResourceGroupDeployment -Name "depfromps" -ResourceGroupName "armfromps" -TemplateFile “myfirstarm.json”  	
-	 ```
+```
    
  
  
