@@ -1,3 +1,4 @@
+```
 Ansible 
 Powershell
 Azure ARM 
@@ -5,7 +6,8 @@ AWS CF
 Terraform 
 Docker 
 K8S 
-   
+```
+
      Apache2/Nginx ==> WebSrv   ==> 80
 	 Tomcat        ==> AppSrv   ==> 8080 /etc/default/jenkins_config here we can change default Port nums.
 	 Jenkins                    ==> 8080
@@ -38,21 +40,22 @@ Grep ==> GREP is for searching a pattern inside a file.
     
    How to delete multiple branches in git ==> git branch -d <branchName>	
    
-   
+```   
   DOCKER ==>
  FROM ubuntu:18.04
  RUN apt-get update && apt-get install apache2/nginx -y 
  EXPOSE 80
  CMD ["service","apache2","start"]
+ ```
  
- 
- 
+ ```
  FROM alpine
  RUN apt-get update && apt-get install tomcat7 -y
  EXPOSE 8080
  CMD ["service","tomcat7","start"]
- 
- 
+ ```
+
+ ```
  FROM alpine
  RUN apt-get update && apt-get install default-jdk -y
  ENV JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64/"
@@ -63,10 +66,10 @@ Grep ==> GREP is for searching a pattern inside a file.
  ADD s3://gameoflife.war /var/lib/tomcat7/webapps/ 
  RUN chmod -R 777 /opt/tomcat/tomcat/bin/*
  CMD ["/opt/tomcat/tomcat/bin/catalina.sh","run"]
+ ```
  
  
- 
- 
+ ```
     ARM TEMPLATE CORE STRUCTURE 
 	
 	{
@@ -85,7 +88,7 @@ Grep ==> GREP is for searching a pattern inside a file.
 	POWERSHELL ==>
     New-AzResourceGroup –Name "armfromps"
     New-AzResourceGroupDeployment -Name "depfromps" -ResourceGroupName "armfromps" -TemplateFile “myfirstarm.json”  	
-	 
+	 ```
    
  
  
