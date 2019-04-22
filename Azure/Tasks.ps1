@@ -1,3 +1,12 @@
+# 05-Apr-2019 Tasks
+  
+# create ResourceGroup
+# Create Storage Account <Suristoragedemo> 
+# Create Data Disks
+# Create managed Disks
+
+
+
 # Getting Storage Account Names belongs to Centralus
   # Get-AzStorageAccount | where location -eq 'centralus' | select Name 
 

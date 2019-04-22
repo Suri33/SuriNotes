@@ -1,6 +1,4 @@
 
-
-
 # Creating Storage Account 
 $rsgname = "storageplaying" 
 $loc = "eastus"
@@ -9,6 +7,9 @@ $storagetwo ="mystorageinhyd"
 $storagethree= "mystorageinblr"
 $storagefour = "mystorageinchn"
 $sku = "Standard_LRS"
+
+# getting Resource Group
+Get-AzResourcegroup | select Name,ResourceGroup,Location
 
 # Creating ResourceGroup
 New-AzResourceGroup -Name $rsgname -Location $loc 

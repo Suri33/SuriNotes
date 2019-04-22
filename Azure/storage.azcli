@@ -1,3 +1,5 @@
+# Creating Storage Account 
 az storage account create -g surigrp -n suriplayinginblr -l centralus --sku Standard_LRS  
 
+# Getting Storage Account Key List  
 az storage account keys list --account-name suriplayinginhyd -g surigrp --output table
