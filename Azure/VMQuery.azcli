@@ -32,7 +32,7 @@ az vm start --ids $(az vm list -g <RG> --query "[].id" -o tsv)
 #  Stopping VM's n a RG
 az vm stop --ids $(az vm list -g <RG> --query "[].id" -o tsv) 
 
-# Starting & Stpping All VM"s at a time 
+# Starting & Stopping All VM"s at a time 
 az vm stop --ids $( az vm list --query "[].id" -o tsv )
 az vm start --ids $( az vm list --query "[].id" -o tsv )
 

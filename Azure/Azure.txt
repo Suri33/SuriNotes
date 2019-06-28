@@ -200,7 +200,7 @@ creating custom image azure powershell ==> google it
 			   install werbserver  ==> tomcat8
 			   login with ubuntu in gitbash (Using public ipv4 from VM)
 			   ==> sudo waagent -deprovision+user -force
-			   Deallocated ane mark the VM as Generalized 
+			   Deallocated and mark the VM as Generalized 
 			   ==> az vm deallocate --resource-group $GrpName --name $VMName
                ==> az vm generalize --resource-group $GrpName --name $VMName
              Image Creation :

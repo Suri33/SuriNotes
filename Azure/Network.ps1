@@ -33,7 +33,7 @@ Add-AzureRmVirtualNetworkSubnetConfig -Name "backendSubnet" -VirtualNetwork $vir
 
  # Network Security Group 
  
- az netwrok nsg create -n surisng -g suri
+ az network nsg create -n surisng -g suri
 
  # Network deleted 
 

@@ -97,7 +97,7 @@ ansible -m ping all
   login  into Ansible ==>
   
     ssh-keygen
-	ssh-copy-id user@localhost
+	ssh-copy-id username@localhost
 	ssh-copy-id username@privateDNS
 	ssh-copy-id usermame@privateDNS
 	

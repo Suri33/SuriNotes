@@ -1,9 +1,8 @@
 ## How to launch Instance 
-
 ```
-* Select AMI => Amazon Machine Image = > Select which Os you want you cant select AMI
-* Choose Instacne Type ( Family,Type,vCPUs,MemoryGiB)
-* Configure instance ( No.of instances ,VPC,Subnet,IAM Role, USer data)
+* Select AMI => Amazon Machine Image = > Select which Os you want you can select AMI
+* Choose Instacne Type (Family,Type,vCPUs,Memory GiB)
+* Configure instance (No.of instances ,VPC,Subnet,IAM Role, USer data)
 * Add storage 
 * Add Tags
 * Configure Security Group 

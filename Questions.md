@@ -111,13 +111,13 @@ It has  following modules
 	  terraform plan .
 	  terraform apply .
    
-                NACL ==>                                                    Security Group ==>
+      NACL ==>                                     Security Group ==>
 
  => Supports Allow rules only 									=> Supports Allow & Deny rules.
- => Stateful													=> Stateless
+ => Stateful													          => Stateless
  => SG are tied to an instance 									=> NACL are tied to the Subnet
- => First layer or defense                                      => Second layer of defense  		 
- => Firewall of the EC2                                         => Firewall of the Subnet 
+ => First layer or defense                      => Second layer of defense  		 
+ => Firewall of the EC2                         => Firewall of the Subnet 
 ```
 
 ```
@@ -142,14 +142,14 @@ JENKINS PLUGINS
 ```
   Roles in Azure   ==>
   
-     1. Web Role
+   1. Web Role
 	 2. Worker Role
 	 3. VM Role
 ```	 
 	 
 ```
 	  Load Balancers in AWS 
-	     => Classic LB
+	   => Classic LB
 		 => Application LB  (Layer 7)
 		 => Network LB (layer 4 )
 		 
@@ -178,11 +178,11 @@ JENKINS PLUGINS
    ---------------------------
 validate => validate the project is correct and all necessary information is available
 compile  => compile the source code of the project 
-test     => test the compiled source code using a suitable unit testing framework. These tests should not require the code be packaged or deployed
+test     => test the compiled source code using a suitable unit testing framework. These tests should not require the                code be packaged or deployed
 package  => take the compiled code and package it in its distributable format, such as a JAR.
 verify   => run any checks on results of integration tests to ensure quality criteria are met
 install  => install the package into the local repository, for use as a dependency in other projects locally
-deploy   => done in the build environment, copies the final package to the remote repository for sharing with other developers and projects   
+deploy   => done in the build environment, copies the final package to the remote repository for sharing with other                   developers and projects   
 ```    			
 				
 				
@@ -194,7 +194,7 @@ deploy   => done in the build environment, copies the final package to the remot
 				  => 2+ Years of IT experience as Cloud Engineer(MS-Azure & Amazon Web Services) along with DevOps(Jenkins,Ansible,Docker,Terraform,Maven,Git)
 		        
 				IT Skills =>
-                   => MS-Azure 
+           => MS-Azure 
 				   => AWS 
 				   => Jenkins
 				   => Ansible
