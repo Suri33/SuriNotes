@@ -1,0 +1,253 @@
+{
+
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "Creating VPC & Ubuntu-16.04 EC2 Instance",
+    "Resources": {
+    
+        
+        "surivpc":  {
+          "Type": "AWS::EC2::VPC",
+          "Properties": {
+            "CidrBlock": "192.168.0.0/16",
+            "Tags": [
+                {
+                    "Key": "Name",
+                    "Value": "SuriVPC"
+                }
+            ]
+    
+          }
+        },
+    
+        "pubSubNet": {
+            "Type": "AWS::EC2::Subnet",
+            "Properties": {
+                
+                "VpcId": {
+                    "Ref": "surivpc"
+                },
+                "CidrBlock": "192.168.0.0/24",
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": "SuriPubSN"
+                    }
+                ]
+            }
+        },
+    
+        "pvtSubNet": {
+            "Type": "AWS::EC2::Subnet",
+            "Properties": {
+                
+                "VpcId": {
+                    "Ref": "surivpc"
+                },
+                "CidrBlock": "192.168.3.0/24",
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": "SuriPvtSN"
+                    }
+                ]
+            }
+        },
+    
+        "suripubrt" : {
+            "Type" : "AWS::EC2::RouteTable",
+            "Properties" : {
+               "VpcId" : { "Ref" : "surivpc" },
+               "Tags" : [ { "Key" : "Name", "Value" : "SuriPubRT" } ]
+            }
+         }, 
+         
+         "suripvtrt" : {
+            "Type" : "AWS::EC2::RouteTable",
+            "Properties" : {
+               "VpcId" : { "Ref" : "surivpc" },
+               "Tags" : [ { "Key" : "Name", "Value" : "SuriPvtRT" } ]
+            }
+         },
+    
+         "pubRTassoc": {
+            "Type": "AWS::EC2::SubnetRouteTableAssociation",
+            "Properties": {
+                "SubnetId": {
+                    "Ref": "pubSubNet"
+                },
+                "RouteTableId": {
+                    "Ref": "suripubrt"
+                }
+            }
+        },
+    
+        "pvtRTassoc": {
+            "Type": "AWS::EC2::SubnetRouteTableAssociation",
+            "Properties": {
+                "SubnetId": {
+                    "Ref": "pvtSubNet"
+                },
+                "RouteTableId": {
+                    "Ref": "suripvtrt"
+                }
+            }
+        },
+    
+         "suriIGW": {
+            "Type": "AWS::EC2::InternetGateway",
+            "Properties": {
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": "suriIGW"
+                    }
+                ]
+            }
+        },
+        "AttachGateway": {
+            "Type": "AWS::EC2::VPCGatewayAttachment",
+            "Properties": {
+                "VpcId": {
+                    "Ref": "surivpc"
+                },
+                "InternetGatewayId": {
+                    "Ref": "suriIGW"
+                }
+            }
+        },
+        "myRoute" : {
+            "Type" : "AWS::EC2::Route",
+            "Properties" : {
+               "RouteTableId" : { "Ref" : "suripubrt" },
+               "DestinationCidrBlock" : "0.0.0.0/0",
+               "GatewayId" : { "Ref" : "suriIGW" }
+            }
+         },
+
+         "NAT" : {
+            "Type" : "AWS::EC2::NatGateway",
+            "Properties" : {
+               "AllocationId" : { "Fn::GetAtt" : ["EIP", "AllocationId"]},
+               "SubnetId" : { "Ref" : "pubSubNet"},
+               "Tags" : [ {"Key" : "Name", "Value" : "SuriNAT" } ]
+              }
+         },
+         "EIP" : {
+            "Type" : "AWS::EC2::EIP",
+            "Properties" : {
+               "Domain" : "vpc"
+            }
+         },
+         "Route" : {
+            "Type" : "AWS::EC2::Route",
+            "Properties" : {
+               "RouteTableId" : { "Ref" : "suripvtrt" },
+               "DestinationCidrBlock" : "0.0.0.0/0",
+               "NatGatewayId" : { "Ref" : "NAT" }
+            }
+         },
+    
+        "sg" : {
+            "Type" : "AWS::EC2::SecurityGroup",
+            "Properties" : {
+                "VpcId" : { "Ref" : "surivpc" },
+                "GroupDescription" : "SuriCFSG",
+                "SecurityGroupIngress" : [ { "IpProtocol" : "tcp", "FromPort" : "22", "ToPort" : "22", "CidrIp" : "13.235.182.99/32" } ],
+                "Tags" : [ {"Key" : "Name", "Value" : "SuriCFSG"}]
+            }
+        },
+
+        "suriec2": {
+            "Type": "AWS::EC2::Instance",
+            "Properties": {
+                "ImageId": "ami-04763b3055de4860b",
+                "InstanceType": "t2.micro",
+                "KeyName": "RCS-POC",
+                "NetworkInterfaces": [
+                    {
+                        "AssociatePublicIpAddress": true,
+                        "DeleteOnTermination": true,
+                        "DeviceIndex": "0",
+                        "SubnetId": {
+                            "Ref": "pubSubNet"
+                        },
+                        "GroupSet": [
+                            {
+                                "Ref": "sg"
+                            }
+                        ]
+                    }
+                ],
+                "Tags" : [ {"Key" : "Name", "Value" : "SuriCFEC2"}]
+            }
+        }
+    
+    
+        
+    },
+
+    "Outputs": {
+        "VPC": {
+            "Description": "Getting VPC ID",
+            "Value": {
+                "Ref": "surivpc"
+            }
+        },
+        "pubsubnet": {
+            "Description": "Getting PubSubeNetID",
+            "Value": {
+                "Ref": "pubSubNet"
+            }
+        },
+        "pvtSubnet": {
+            "Description": "Getting PvtSubNetID",
+            "Value": {
+                "Ref": "pvtSubNet"
+            }
+        
+        },
+        "IGW": {
+            "Description": "Getting IGW ID",
+            "Value": {
+                "Ref": "suriIGW"
+            }
+        },
+        "PubRT": {
+            "Description": "Getting PubRT ID",
+            "Value": {
+                "Ref": "suripubrt"
+            }
+        },
+        "PvtRT": {
+            "Description": "Getting PvtRT ID",
+            "Value": {
+                "Ref": "suripvtrt"
+            }
+        },
+
+        "sgid": {
+
+            "Description": "Getting SG-ID",
+            "Value": {
+                "Ref": "sg"
+            }
+        },
+
+        "NATID": {
+            "Description": "Getting NAT-ID",
+            "Value": {
+                "Ref": "NAT"
+            }
+
+        },
+        "ec2id":{ 
+            "Description": "Getting Ec2 ID",
+            "Value": {
+
+                "Ref": "suriec2"
+            }
+    }
+    }
+    
+    
+    }
